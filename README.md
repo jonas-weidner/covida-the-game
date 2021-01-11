@@ -1,4 +1,4 @@
-# pandemic
+# Covida - the game
 
 ## Project setup
 ```
