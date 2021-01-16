@@ -1,7 +1,7 @@
 <template>
     <div class="logout-button">
-        <c-button variant-color="blue" size="md" @click="logout">
-            Ausloggen
+        <c-button variant-color="blue" size="sm" @click="logout">
+            <div class="text-xs">Ausloggen</div>
         </c-button>
     </div>
 </template>

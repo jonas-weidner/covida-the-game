@@ -5,6 +5,7 @@ import store from "@/store";
 import UserCredential = firebase.auth.UserCredential;
 import DocumentData = firebase.firestore.DocumentData;
 import { City, CityCard, Game, Player, PlayingCard } from "@/types";
+import { shuffleCards } from "@/services/gameActions";
 
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_APIKEY,
@@ -162,40 +163,25 @@ export const startGame = async (): Promise<void> => {
     if (game) await games.doc(game.id).update("started", true);
 };
 
-export const addOutbreak = async (): Promise<void> => {
-    const game = await findGame(store.getters.getCurrentGameCode);
-    console.log(game);
-    if (game) {
-        const gameData = game.data() as Game;
-        await games.doc(game.id).update("outbreaks", gameData.outbreaks + 1);
-    }
-};
-
-export const removeOutbreak = async (): Promise<void> => {
+export const changeOutbreaks = async (remove?: boolean): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) {
         const gameData = game.data() as Game;
-        await games.doc(game.id).update("outbreaks", gameData.outbreaks - 1);
+        const value = remove ? gameData.outbreaks-1 : gameData.outbreaks+1;
+        await games.doc(game.id).update("outbreaks", value);
     }
 };
 
-export const increaseInfectionRate = async (): Promise<void> => {
+export const changeInfectionRate = async (remove?: boolean): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) {
         const gameData = game.data() as Game;
-        await games.doc(game.id).update("infectionRate", gameData.infectionRate + 1);
+        const value = remove ? gameData.infectionRate-1 : gameData.infectionRate+1;
+        await games.doc(game.id).update("infectionRate", value);
     }
 };
 
-export const decreaseInfectionRate = async (): Promise<void> => {
-    const game = await findGame(store.getters.getCurrentGameCode);
-    if (game) {
-        const gameData = game.data() as Game;
-        await games.doc(game.id).update("infectionRate", gameData.infectionRate - 1);
-    }
-};
-
-export const playHandCard = async (card: PlayingCard): Promise<void> => {
+export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) {
         const gameData = game.data() as Game;
@@ -207,7 +193,7 @@ export const playHandCard = async (card: PlayingCard): Promise<void> => {
         if (cardIndex !== -1) {
             players[playerIndex].playingCards.splice(cardIndex, 1);
             await games.doc(game.id).update("players", players);
-            await games.doc(game.id)
+            if (!remove) await games.doc(game.id)
                 .update("playerDiscardPile", [...gameData.playerDiscardPile, card]);
         }
     }
@@ -226,5 +212,54 @@ export const drawPlayingCards = async (): Promise<void> => {
         players[playerIndex].playingCards =
             [...players[playerIndex].playingCards, ...cardsToHand];
         await games.doc(game.id).update("players", players);
+    }
+};
+
+export const pickupDiscardedPlayingCard = async (cardIndex: number): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const discardPile = [...gameData.playerDiscardPile];
+        const cardToUser = discardPile.splice(cardIndex, 1);
+        const players = gameData.players;
+        const playerIndex = players
+            .findIndex((player) => player.id === auth.currentUser?.uid);
+        players[playerIndex].playingCards = [...players[playerIndex].playingCards, ...cardToUser];
+        await games.doc(game.id).update("playerDiscardPile", discardPile);
+        await games.doc(game.id).update("players", players);
+    }
+};
+
+export const updatePlayerPlayingCards = async (cards: PlayingCard[], player: Player): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const players = gameData.players;
+        const playerIndex = players.findIndex((pl) => pl.id === player.id);
+        players[playerIndex].playingCards = cards;
+        await games.doc(game.id).update("players", players);
+    }
+};
+
+export const drawInfectionCard = async (last?: boolean): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const infectionDeck = [...gameData.infectionDeck];
+        const newCard = last ? infectionDeck.shift() : infectionDeck.pop();
+        await games.doc(game.id).update("infectionDeck", infectionDeck);
+        const infectionDiscard = [...gameData.infectionDiscardPile, newCard];
+        await games.doc(game.id).update("infectionDiscardPile", infectionDiscard);
+    }
+};
+
+export const shuffleAndBackOnTop = async (): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const infectionDiscard = shuffleCards([...gameData.infectionDiscardPile]);
+        const infectionDeck = [...gameData.infectionDeck, ...infectionDiscard];
+        await games.doc(game.id).update("infectionDeck", infectionDeck);
+        await games.doc(game.id).update("infectionDiscardPile", []);
     }
 };

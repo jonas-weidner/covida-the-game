@@ -1,7 +1,7 @@
 <template>
     <div>
-        <c-button variant-color="blue" size="md" @click="exitGame">
-            Spiel verlassen
+        <c-button variant-color="blue" size="sm" @click="exitGame">
+            <div class="text-xs">Spiel verlassen</div>
         </c-button>
     </div>
 </template>

@@ -3,6 +3,7 @@ import { Role } from "@/types";
 export const roles: Role[] = [
     {
         name: "Krisenmanager",
+        color: "#19EBF1",
         actions: [
             "Der Krisenmanager darf mit 1 Aktion 1 Ereigniskarte aus\n" +
             "dem Spielerkarten-Ablagestapel heraussuchen und offen\n" +
@@ -16,6 +17,7 @@ export const roles: Role[] = [
     },
     {
         name: "Logistiker",
+        color: "#E37EC9",
         actions: [
             "Der Logistiker darf mit 1 Aktion eine Spielfigur in eine beliebige Stadt bewegen," +
             " in der bereits die Spielfigur eines anderen Spielers steht",
@@ -29,6 +31,7 @@ export const roles: Role[] = [
     },
     {
         name: "Sanitäter",
+        color: "#E38128",
         actions: [
             "Wenn der Sanitäter die Aktion „Seuche behandeln“\n" +
             "durchführt, entfernt er nicht nur 1 Seuchenwürfel aus der\n" +
@@ -45,6 +48,7 @@ export const roles: Role[] = [
     },
     {
         name: "Betriebsexperte",
+        color: "#1BCF68",
         actions: [
             "Der Betriebsexperte darf mit 1 Aktion ein Forschungszentrum in der Stadt \n" +
             "errichten, in der er sich gerade befindet, ohne dafür eine Stadtkarte abwerfen\n" +
@@ -59,6 +63,7 @@ export const roles: Role[] = [
     },
     {
         name: "Quarantäne-Spezialistin",
+        color: "#156B28",
         actions: [
             "Die Quarantäne-Spezialistin verhindert Ausbrüche und das\n" +
             "Platzieren von neuen Seuchenwürfeln sowohl an ihrem\n" +
@@ -69,6 +74,7 @@ export const roles: Role[] = [
     },
     {
         name: "Forscherin",
+        color: "#A75D06",
         actions: [
             "Die Forscherin darf bei der Aktion „Wissen teilen“ Folgendes\n" +
             "tun: Anstelle der zur Stadt passenden Karte, darf sie einem\n" +
@@ -79,6 +85,7 @@ export const roles: Role[] = [
     },
     {
         name: "Wissenschaftlerin",
+        color: "#8E2CEB",
         actions: [
             "Die Wissenschaftlerin benötigt nur 4 Stadtkarten der\n" +
             "gleichen Farbe (und nicht 5), um das Heilmittel für die\n" +

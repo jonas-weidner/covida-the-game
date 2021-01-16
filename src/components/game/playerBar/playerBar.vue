@@ -2,89 +2,101 @@
     <div class="flex justify-center h-full w-full">
         <div v-for="player in game.players"
              :key="player.id"
-             class="mx-3 w-1/4 px-5 py-1 border-2 border-solid
-             border-black shadow-lg overflow-hidden"
+             class="mx-2 w-1/6 shadow-lg overflow-hidden rounded-lg"
         >
-            <div class="flex w-full justify-between">
-                <p class="font-bold text-xl">{{ player.name }}</p>
+            <div
+                class="flex w-full justify-between text-white items-center rounded-b"
+                :style="{ backgroundColor: roleColor(player) }"
+            >
+                <p class="pl-2 py-2 font-bold text-xs">{{ player.name }}</p>
                 <role-popup :player="player" />
+
+                <c-button
+                    v-if="activePlayer(player)"
+                    class="p-0 m-0"
+                    variant-color="blue"
+                    size="sm"
+                    @click="drawPlayingCards"
+                >
+                    +2
+                </c-button>
             </div>
 
-            <div class="pt-2 h-36 overflow-y-scroll">
-                <div class="rounded bg-gray-200 font-semibold py-2 px-3 mb-2"
-                     v-for="(card, index) in player.playingCards" :key="index">
-                    <div v-if="card.type === 'CITY'" class="flex items-center">
-                        <div :class="regionClass(card.city.region)" />
-                        <div class="w-1/3 pl-3">{{ card.city.city }}</div>
-                        <div class="w-1/4 text-gray-400">
-                            {{ population(card.city.population) }}
-                        </div>
-                        <div class="w-1/4 cursor-pointer" @click="playHandCard(card)">
-                            Karte spielen
-                        </div>
-                    </div>
-                    <div v-if="card.type === 'ACTION'" class="flex items-center">
-                        <div class="region"></div>
-                        <div class="w-1/3">
-                            <action-popup :action="card.action"/>
-                        </div>
-                        <div class="w-1/4"/>
-                        <div class="w-1/4 cursor-pointer" @click="playHandCard(card)">
-                            Karte spielen
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <playing-cards
+                :player="player"
+                @player-deck-update="playerDeckUpdate(player, $event)"
+            />
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Vue, Component, Prop, Watch } from "vue-property-decorator";
+
 import RolePopup from "./rolePopup";
-import ActionPopup from "./actionPopup";
-import numeral from "numeral";
-import { PlayingCard, Region } from "@/types";
-import { playHandCard } from "@/services/firebase";
-export default Vue.extend({
+import { Game, Player, PlayingCard } from "@/types";
+import PlayingCards from "@/components/game/playerBar/playingCards";
+import {
+    updateAllPlayers,
+    updatePlayerPlayingCards,
+    drawPlayingCards,
+    auth
+} from "@/services/firebase";
+
+
+@Component({
     components: {
-        RolePopup,
-        ActionPopup
-    },
-    props: ["game"],
-    methods: {
-        regionClass(region: Region): string {
-            return `region rounded-full ${region}`;
-        },
-        population(pop: number): string {
-            return numeral(pop).format("'0.0a'");
-        },
-        async playHandCard(card: PlayingCard): Promise<void> {
-            return await playHandCard(card);
+        PlayingCards,
+        RolePopup
+    }
+})
+export default class PlayerBar extends Vue {
+    @Prop({ required: true }) readonly game!: Game;
+
+    private playersWithDeckUpdates: Player[] = [];
+
+    @Watch("playersWithDeckUpdates")
+    onPlayerWithDeckUpdates(array) {
+        if (array.length === 2) {
+            this.performPlayerChanges(array);
+            this.playersWithDeckUpdates = [];
         }
     }
-});
+
+    public activePlayer(player: Player): boolean {
+        const current = auth.currentUser?.uid;
+        return player.activeTurn && current === player.id;
+    }
+
+    public async drawPlayingCards(): Promise<void> {
+        return await drawPlayingCards();
+    }
+
+    public roleColor(player: Player): string {
+        if (player.role) return player.role?.color;
+        return "#1972FF";
+    }
+
+    public playerDeckUpdate(player: Player, action: { newDeck: PlayingCard[]; dropResult: {
+        removedIndex: number; addedIndex: number; payload: PlayingCard; }; }): void {
+        const { removedIndex, addedIndex } = action.dropResult;
+
+        if (removedIndex != null && addedIndex != null) {
+            updatePlayerPlayingCards(action.newDeck, player);
+        } else {
+            const alteredPlayer = { ...player };
+            alteredPlayer.playingCards = action.newDeck;
+            this.playersWithDeckUpdates.push(alteredPlayer);
+        }
+    }
+
+    private async performPlayerChanges(array: Player[]): Promise<void> {
+        const newPlayers = [...this.game.players];
+        const firstIndex = newPlayers.findIndex((player) => player.id === array[0].id) as number;
+        const secondIndex = newPlayers.findIndex((player) => player.id === array[1].id) as number;
+        newPlayers[firstIndex] = array[0];
+        newPlayers[secondIndex] = array[1];
+        await updateAllPlayers(newPlayers);
+    }
+}
 </script>
-
-<style scoped>
-.region {
-    height: 8px;
-    width: 8px;
-}
-
-.BLUE {
-    background-color: blue;
-}
-
-.RED {
-    background-color: red;
-}
-
-.YELLOW {
-    background-color: #ffd500;
-}
-
-.BLACK {
-    background-color: black;
-}
-</style>
