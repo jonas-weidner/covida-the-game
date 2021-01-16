@@ -1,6 +1,6 @@
 <template>
     <div >
-        <p class="cursor-pointer pl-3" @click="open">
+        <p class="cursor-pointer" @click="open">
             {{ action ? action.name : "" }}
         </p>
 

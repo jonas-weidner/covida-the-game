@@ -1,7 +1,7 @@
 <template>
     <div>
-        <c-button variant-color="blue" size="md" @click="startGame">
-            Spiel starten
+        <c-button variant-color="blue" size="sm" @click="startGame">
+            <div class="text-xs">Spiel starten</div>
         </c-button>
     </div>
 </template>
@@ -62,7 +62,8 @@ export default Vue.extend({
                 infectionDiscardPile = [...infectionDiscardPile, ...threeCards];
                 for (const card of threeCards) {
                     const cityIndex = newCities.findIndex((city) => city.city === card.city);
-                    newCities[cityIndex].diseaseCubes = index;
+                    const regionString = card.region.toString().toLowerCase();
+                    newCities[cityIndex].diseaseCubes[regionString] = index;
                 }
             }
 

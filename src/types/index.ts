@@ -63,12 +63,18 @@ export interface Role {
     name: string;
     actions: string[];
     notes?: string;
+    color: string;
 }
 
 export interface City {
     city: string;
     region: Region;
     researchStation: boolean;
-    diseaseCubes: number;
+    diseaseCubes: {
+        yellow: number;
+        red: number;
+        black: number;
+        blue: number;
+    };
     playersInCity: Player[];
 }
