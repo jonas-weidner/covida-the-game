@@ -33,7 +33,8 @@ export default Vue.extend({
     methods: {
         async startGame() {
             const assigned = await this
-                .assignRoleAndCardsToPlayers(shuffleCards([...playingCards]));
+                .assignRoleAndCardsToPlayers(
+                    shuffleCards(JSON.parse(JSON.stringify([...playingCards]))));
             const deckWithPandemics = this.addPandemicCardsToDeck(assigned.deck);
             const newCities = this.initializeCities(assigned.players);
             const decks = this.initializeInfectionDeck(newCities);
@@ -46,16 +47,18 @@ export default Vue.extend({
             ]);
         },
         initializeCities(players: Player[]): City[] {
-            const newCities = [...cities];
+            const newCities = JSON.parse(JSON.stringify([...cities]));
             const atlantaIndex = newCities.findIndex((city) => city.city === "Atlanta");
             newCities[atlantaIndex].researchStation = true;
             newCities[atlantaIndex].playersInCity = players;
             return newCities;
         },
+        //eslint-disable-next-line
         initializeInfectionDeck(newCities: City[]): { infectionDeck: CityCard[];
             infectionDiscardPile: CityCard[]; cities: City[];
         } {
-            const infectionDeck = shuffleCards([...infectionCards]) as CityCard[];
+            const infectionDeck = shuffleCards(JSON.parse(JSON.stringify([...infectionCards]))) as
+                CityCard[];
             let infectionDiscardPile: CityCard[] = [];
             for (let index = 3; index > 0; index--) {
                 const threeCards = infectionDeck.splice(0, 3);

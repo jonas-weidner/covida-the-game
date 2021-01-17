@@ -12,6 +12,8 @@
                 <exit-game v-if="game && game.started" />
             </div>
 
+            <next-turn :game="game" />
+
             <div class="infection-wrapper flex justify-between items-end space-x-3">
                 <draw-infection-card />
                 <infection-discard-pile v-if="game" :discard-pile="game.infectionDiscardPile" />
@@ -37,9 +39,11 @@ import InfectionDiscardPile from "@/components/game/board/infectionDiscardPile";
 import Outbreaks from "@/components/game/board/outbreaks";
 import InfectionRate from "@/components/game/board/infectionRate";
 import DrawInfectionCard from "@/components/game/board/drawInfectionCard";
+import NextTurn from "@/components/game/board/nextTurn";
 
 export default Vue.extend({
     components: {
+        NextTurn,
         InfectionDiscardPile,
         PlayerDiscardPile,
         ExitGame,

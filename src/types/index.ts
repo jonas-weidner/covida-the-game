@@ -77,4 +77,9 @@ export interface City {
         blue: number;
     };
     playersInCity: Player[];
+    labelPosition: "top"|"bottom"|"right"|"left";
+    location: {
+        top: number;
+        left: number;
+    };
 }
