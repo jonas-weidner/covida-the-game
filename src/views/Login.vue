@@ -1,6 +1,9 @@
 <template>
-    <div class="fullscreen teal flex items-center justify-center">
-        <div class="beige py-16 flex items-center justify-center">
+    <div class="fullscreen flex items-center justify-center relative">
+        <div class="bg-image">
+            <div class="overlay"></div>
+        </div>
+        <div class="flex items-center justify-center p-20 bg-gray-100 rounded-2xl">
             <div class="w-96">
                 <h2 class="text-center text-6xl font-bold">Covida</h2>
                 <p class="text-center">by Jonas Weidner</p>
@@ -88,12 +91,25 @@ export default Vue.extend({
     height: 100vh;
 }
 
-.teal {
-    background-color: #13BDB6;
+.bg-image {
+    position: absolute;
+    z-index: -1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../assets/world-map.jpg");
+    background-size: cover;
+    filter: blur(4px);
 }
 
-.beige {
-    background-color: white;
-    width: 100vw;
+.overlay {
+    position: absolute;
+    z-index: -999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.1);
 }
 </style>
