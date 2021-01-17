@@ -14,7 +14,7 @@ export const infectionCards: CityCard[] = [
         population: 25600000
     },
     {
-        city: "Honkong",
+        city: "Hongkong",
         country: "China",
         region: Region.Red,
         population: 7409800
@@ -86,7 +86,7 @@ export const infectionCards: CityCard[] = [
         population: 7036792
     },
     {
-        city: "Bankok",
+        city: "Bangkok",
         country: "Thailand",
         region: Region.Red,
         population: 14626225
@@ -214,7 +214,7 @@ export const infectionCards: CityCard[] = [
     {
         city: "Moskau",
         country: "Russland",
-        region: Region.Black,
+        region: Region.Blue,
         population: 16170000
     },
     {

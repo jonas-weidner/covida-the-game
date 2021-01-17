@@ -61,7 +61,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Honkong",
+            city: "Hongkong",
             country: "China",
             region: Region.Red,
             population: 7409800
@@ -169,7 +169,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Bankok",
+            city: "Bangkok",
             country: "Thailand",
             region: Region.Red,
             population: 14626225
@@ -360,7 +360,7 @@ export const playingCards: PlayingCard[] = [
         city: {
             city: "Moskau",
             country: "Russland",
-            region: Region.Black,
+            region: Region.Blue,
             population: 16170000
         }
     },

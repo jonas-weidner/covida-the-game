@@ -148,6 +148,11 @@ export const initializeCities = async (cityArray: City[]): Promise<void> => {
     if (game) await games.doc(game.id).set({ cities: cityArray }, { merge: true });
 };
 
+export const updateCities = async (cities: City[]): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) await games.doc(game.id).update("cities", cities);
+};
+
 export const initializeInfectionDeck = async (infectionDeck: CityCard[]): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) await games.doc(game.id).update("infectionDeck", infectionDeck);
@@ -261,5 +266,33 @@ export const shuffleAndBackOnTop = async (): Promise<void> => {
         const infectionDeck = [...gameData.infectionDeck, ...infectionDiscard];
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         await games.doc(game.id).update("infectionDiscardPile", []);
+    }
+};
+
+export const changeDiseaseLevel = async (city: City, color: string, decrease?: boolean): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const cities = gameData.cities;
+        const cityIndex = cities.findIndex((cit) => cit.city === city.city);
+        cities[cityIndex].diseaseCubes[color] = decrease
+            ? city.diseaseCubes[color]-1
+            : city.diseaseCubes[color]+1;
+
+        await games.doc(game.id).update("cities", cities);
+    }
+};
+
+export const nextPlayer = async (): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game) {
+        const gameData = game.data() as Game;
+        const players = [...gameData.players];
+        const playerIndex = players
+            .findIndex((player) => player.id === auth.currentUser?.uid);
+        players[playerIndex].activeTurn = false;
+        const nextIndex = (playerIndex + 1) < players.length ? playerIndex + 1 : 0;
+        players[nextIndex].activeTurn = true;
+        await games.doc(game.id).update("players", players);
     }
 };
