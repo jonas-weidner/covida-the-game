@@ -11,6 +11,12 @@ export enum PlayingCardType {
   Pandemic = "PANDEMIC"
 }
 
+export enum DiseaseState {
+    NotFound = "NOTFOUND",
+    Found = "FOUND",
+    Cured = "CURED"
+}
+
 export interface PlayingCard {
   type: PlayingCardType;
   city?: CityCard;
@@ -43,12 +49,14 @@ export interface Game {
     infectionRate: number;
     outbreaks: number;
     cities: City[];
-    curedDiseases: {
-        yellow: boolean;
-        red: boolean;
-        black: boolean;
-        blue: boolean;
-    };
+    diseaseStates: DiseaseStates;
+}
+
+export interface DiseaseStates {
+    yellow: DiseaseState;
+    red: DiseaseState;
+    black: DiseaseState;
+    blue: DiseaseState;
 }
 
 export interface Player {

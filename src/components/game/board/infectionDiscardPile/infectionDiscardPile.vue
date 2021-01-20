@@ -25,7 +25,7 @@ export default class InfectionDiscardPile extends Vue {
     @Prop({ default: () => [] }) discardPile!: CityCard[];
 
     get sortedDiscardPile() {
-        return this.discardPile.reverse();
+        return JSON.parse(JSON.stringify(this.discardPile)).reverse();
     }
 
     public regionClass(region: Region): string {

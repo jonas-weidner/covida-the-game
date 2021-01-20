@@ -18,6 +18,8 @@
                 <draw-infection-card />
                 <infection-discard-pile v-if="game" :discard-pile="game.infectionDiscardPile" />
             </div>
+
+            <medicines :game="game" />
         </div>
 
         <div v-if="game" class="player-bar">
@@ -40,9 +42,11 @@ import Outbreaks from "@/components/game/board/outbreaks";
 import InfectionRate from "@/components/game/board/infectionRate";
 import DrawInfectionCard from "@/components/game/board/drawInfectionCard";
 import NextTurn from "@/components/game/board/nextTurn";
+import Medicines from "@/components/game/board/medicines";
 
 export default Vue.extend({
     components: {
+        Medicines,
         NextTurn,
         InfectionDiscardPile,
         PlayerDiscardPile,

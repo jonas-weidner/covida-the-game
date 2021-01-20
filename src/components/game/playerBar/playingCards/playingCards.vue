@@ -50,26 +50,35 @@
                 </div>
             </Draggable>
         </Container>
+        <resilient-population-popup ref="resilient" :game="game" />
+        <forecast-popup ref="forecast" :game="game" />
     </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 import { Container, Draggable } from "vue-smooth-dnd";
-import { Player, PlayingCard, Region } from "@/types";
+import { Game, Player, PlayingCard, PlayingCardType, Region } from "@/types";
 import ActionPopup from "@/components/game/playerBar/actionPopup";
 import numeral from "numeral";
 import { auth, playHandCard } from "@/services/firebase";
 import { applyDrag } from "@/services/dnd";
+import ResilientPopulationPopup
+    from "@/components/game/playerBar/playingCards/resilientPopulationPopup";
+import ForecastPopup
+    from "@/components/game/playerBar/playingCards/forecastPopup";
 
 @Component({
     components: {
+        ResilientPopulationPopup,
+        ForecastPopup,
         ActionPopup,
         Container,
         Draggable
     }
 })
 export default class PlayingCards extends Vue {
+    @Prop({ required: true }) readonly game!: Game;
     @Prop() player!: Player;
 
     get currentUser() {
@@ -86,6 +95,11 @@ export default class PlayingCards extends Vue {
     }
 
     public async playHandCard(card: PlayingCard, remove?: boolean): Promise<void> {
+        if (card.type === PlayingCardType.Action && card.action?.name === "Zähe Bevölkerung")
+            (this.$refs.resilient as any).open();
+        else if (card.type === PlayingCardType.Action && card.action?.name === "Prognose")
+            (this.$refs.forecast as any).open();
+
         return await playHandCard(card, remove);
     }
 
