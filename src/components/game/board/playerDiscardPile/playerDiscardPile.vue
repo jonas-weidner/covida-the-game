@@ -1,5 +1,6 @@
 <template>
     <div class="player-discard-pile-wrapper mt-3">
+        <h3 class="font-bold">Karten im Spielerstapel: {{ game.playerDeck.length }}</h3>
         <h2 class="text-lg font-bold">Spielerablegestapel</h2>
         <div class="h-48 pt-1 overflow-y-scroll">
             <div class="rounded bg-gray-200 font-semibold mb-1"
@@ -45,7 +46,7 @@ export default class PlayingCards extends Vue {
     @Prop({ required: true }) game!: Game;
 
     get sortedDiscardPile() {
-        return [...this.game.playerDiscardPile].reverse();
+        return JSON.parse(JSON.stringify(this.game.playerDiscardPile)).reverse();
     }
 
     get isCrisisManager(): boolean {

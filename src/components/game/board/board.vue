@@ -34,19 +34,21 @@
                     @mouseleave="focused = null"
                 >
                     <div class="font-bold">{{ city.city }}</div>
-                    <div class="flex items-center space-x-0.5 leading-none">
+                    <div class="flex items-center justify-between leading-none">
                         <div
                             v-for="color in colors" :key="color"
                             :class="diseaseCubeClasses(color.toUpperCase())"
                         >
-                            <div
-                                v-if="focused === city.city"
-                                @click="changeDiseaseLevel(city, color)">+
-                            </div>
-                            <div>{{ city.diseaseCubes[color] }}</div>
-                            <div
-                                v-if="focused === city.city"
-                                @click="changeDiseaseLevel(city, color, true)">-
+                            <div v-if="city.diseaseCubes[color] > 0 || focused === city.city">
+                                <div
+                                    v-if="focused === city.city"
+                                    @click="changeDiseaseLevel(city, color)">+
+                                </div>
+                                <div>{{ city.diseaseCubes[color] }}</div>
+                                <div
+                                    v-if="focused === city.city"
+                                    @click="changeDiseaseLevel(city, color, true)">-
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -54,12 +56,12 @@
                         @drop="onDrop"
                         group-name="playerInCity"
                         :get-child-payload="getChildPayload"
-                        class="flex items-center space-x-0.5 mt-0.5 w-full">
+                        class="flex items-center justify-between mt-0.5 w-full">
                         <Draggable v-for="(player, playerIndex) in city.playersInCity"
                               :key="playerIndex">
                             <div
                                 :style="{ backgroundColor: player.role.color }"
-                                class="w-1 h-2 rounded"
+                                class="w-2 h-2 rounded"
                             />
                         </Draggable>
                     </Container>

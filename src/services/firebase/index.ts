@@ -2,10 +2,19 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import store from "@/store";
+import {
+    City,
+    CityCard,
+    DiseaseState,
+    DiseaseStates,
+    Game,
+    Player,
+    PlayingCard,
+    PlayingCardType
+} from "@/types";
+import { shuffleCards } from "@/services/gameActions";
 import UserCredential = firebase.auth.UserCredential;
 import DocumentData = firebase.firestore.DocumentData;
-import { City, CityCard, Game, Player, PlayingCard } from "@/types";
-import { shuffleCards } from "@/services/gameActions";
 
 const firebaseConfig = {
     apiKey: process.env.VUE_APP_FIREBASE_APIKEY,
@@ -109,11 +118,11 @@ export const createNewGame = async (gameCode: string, players: number, difficult
             infectionDiscardPile: [],
             outbreaks: 0,
             infectionRate: 1,
-            curedDiseases: {
-                yellow: false,
-                red: false,
-                black: false,
-                blue: false
+            diseaseStates: {
+                yellow: DiseaseState.NotFound,
+                red: DiseaseState.NotFound,
+                black: DiseaseState.NotFound,
+                blue: DiseaseState.NotFound
             },
             cities: [],
             started: false
@@ -186,6 +195,7 @@ export const changeInfectionRate = async (remove?: boolean): Promise<void> => {
     }
 };
 
+//eslint-disable-next-line max-lines-per-function
 export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) {
@@ -194,7 +204,13 @@ export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise
         const playerIndex = players
             .findIndex((player) => player.id === auth.currentUser?.uid);
         const cardIndex = players[playerIndex].playingCards
-            .findIndex((deckCard) => deckCard.city?.city === card.city?.city);
+            .findIndex((deckCard) => {
+                if (deckCard.type === PlayingCardType.City)
+                    return deckCard.city?.city === card.city?.city;
+                else if (deckCard.type === PlayingCardType.Action)
+                    return deckCard.action?.name === card.action?.name;
+                return false;
+            });
         if (cardIndex !== -1) {
             players[playerIndex].playingCards.splice(cardIndex, 1);
             await games.doc(game.id).update("players", players);
@@ -295,4 +311,10 @@ export const nextPlayer = async (): Promise<void> => {
         players[nextIndex].activeTurn = true;
         await games.doc(game.id).update("players", players);
     }
+};
+
+export const updateDiseaseStates = async (states: DiseaseStates): Promise<void> => {
+    const game = await findGame(store.getters.getCurrentGameCode);
+    if (game)
+        await games.doc(game.id).update("diseaseStates", states);
 };

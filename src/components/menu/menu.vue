@@ -33,3 +33,27 @@ export default Vue.extend({
     }
 });
 </script>
+
+<style scoped>
+.bg-image {
+    position: absolute;
+    z-index: -1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("../../assets/world-map.jpg");
+    background-size: cover;
+    filter: blur(4px);
+}
+
+.overlay {
+    position: absolute;
+    z-index: -999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.1);
+}
+</style>

@@ -26,6 +26,7 @@
 
             <playing-cards
                 :player="player"
+                :game="game"
                 @player-deck-update="playerDeckUpdate(player, $event)"
             />
         </div>
