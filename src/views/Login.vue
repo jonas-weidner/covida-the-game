@@ -31,6 +31,7 @@
                           size="md" @click="signIn('google')">
                     Einloggen mit Google
                 </c-button>
+
                 <c-button class="mt-5 w-full" variant-color="blue"
                           size="md" @click="signIn('email')">
                     Einloggen
