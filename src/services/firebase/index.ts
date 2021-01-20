@@ -43,6 +43,11 @@ const findGame = async (gameCode: string) => {
     return null!;
 };
 
+export const getAuthorizedPlayers = async (): Promise<string[]> => {
+    const snap = await database.collection("authorized").doc("family").get();
+    return snap.data()?.players;
+};
+
 export const firebaseSignIn = async (email: string, password: string, type: "google"|"email"): Promise<UserCredential> => {
     try {
         if (type === "google") {

@@ -6,11 +6,15 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         currentGameCode: null! as string,
-        goToPlayer: null! as any
+        goToPlayer: null! as any,
+        authorizedPlayers: [] as string[]
     },
     getters: {
         getCurrentGameCode: (state): string => {
             return state.currentGameCode;
+        },
+        getAuthorizedPlayers: (state): string[] => {
+            return state.authorizedPlayers;
         },
         getGoToPlayer: (state): any => {
             return state.goToPlayer;
@@ -22,6 +26,9 @@ export default new Vuex.Store({
         },
         setGoToPlayer(state, location: { top: number; left: number }) {
             state.goToPlayer = location;
+        },
+        setAuthorizedPlayers(state, players) {
+            state.authorizedPlayers = players;
         }
     },
     actions: {},
