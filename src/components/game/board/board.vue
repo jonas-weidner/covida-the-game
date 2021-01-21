@@ -1,7 +1,8 @@
 <template>
     <panZoom @init="onInit" :options="{ zoomDoubleClickSpeed: 1, beforeMouseDown: shouldPan }">
         <div class="flex justify-center items-center relative">
-            <img src="@/assets/world-map.jpg" width="3500px" height="1750px" />
+            <img src="@/assets/world-map.jpg" width="3500px" height="1750px"
+                 style="filter: brightness(70%);" />
 
             <div
                 v-for="city in citiesWithPosition" :key="city.city"
@@ -124,7 +125,7 @@ export default class Board extends Vue {
     }
 
     public cityPopoverClasses(position: string): string {
-        return `city-popover-${position} rounded-sm shadow-lg w-11`;
+        return `city-popover-${position} rounded-sm shadow-lg w-11 opacity-80`;
     }
 
     public async changeDiseaseLevel(city: City, color: string, decrease?: boolean): Promise<void> {

@@ -1,7 +1,10 @@
 <template>
     <div class="mt-5">
         <h2 class="text-lg font-bold text-center">Infektionsablegestapel</h2>
-        <div class="h-24 pt-1 overflow-y-scroll">
+        <div class="max-h-24 pt-1 overflow-y-scroll">
+            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700">
+                Keine Karten im Ablegestapel
+            </div>
             <div
                 class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card) in sortedDiscardPile" :key="card.city"

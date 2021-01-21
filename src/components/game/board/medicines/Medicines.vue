@@ -1,9 +1,9 @@
 <template>
     <div
-        v-if="game != null && game.diseaseStates != null"
-        class="medicines-wrapper flex flex-col items-center justify-center"
+
+        class="medicines-wrapper rounded-l-2xl"
     >
-        <div class="py-1" v-for="color in Object.keys(game.diseaseStates)" :key="color">
+        <div class="py-1" v-for="color in diseaseStates" :key="color">
             <div class="flex justify-center items-center space-x-2">
                 <div
                     v-for="(state, index) in states" :key="index"
@@ -24,11 +24,17 @@ import { updateDiseaseStates } from "@/services/firebase";
 export default class Medicines extends Vue {
     @Prop({ required: true }) game!: Game;
 
+    get diseaseStates(): string[] {
+        if (this.game)
+            return Object.keys(this.game.diseaseStates).sort();
+        return [];
+    }
+
     private states = [DiseaseState.Cured, DiseaseState.Found, DiseaseState.NotFound];
 
     public diseaseClasses(color: string, state: string): string {
         const gameState: DiseaseState = this.game.diseaseStates[color];
-        const baseClasses = `w-4 h-8 ${color}-border rounded-full cursor-pointer opacity-40`;
+        const baseClasses = `w-4 h-8 ${color}-border rounded-full cursor-pointer opacity-70`;
         if (gameState === state)
             return `${baseClasses} ${color}-bg`;
         return baseClasses;
@@ -45,9 +51,15 @@ export default class Medicines extends Vue {
 <style>
 .medicines-wrapper {
     position: absolute;
-    right: 10px;
+    right: 0;
     top: 50%;
     transform: translate(0%, -50%);
+    background-color: rgba(255,255,255,0.3);
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .blue-bg {

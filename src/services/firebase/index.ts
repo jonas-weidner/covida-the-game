@@ -106,7 +106,7 @@ export const createNewGame = async (gameCode: string, players: number, difficult
     try {
         return await games.add({
             gameCode: gameCode,
-            numberOfPlayers: players,
+            numberOfPlayers: parseInt(players as any),
             difficulty: parseInt(difficulty as any),
             players: [
                 {
@@ -214,6 +214,8 @@ export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise
                     return deckCard.city?.city === card.city?.city;
                 else if (deckCard.type === PlayingCardType.Action)
                     return deckCard.action?.name === card.action?.name;
+                else if (deckCard.type === PlayingCardType.Pandemic)
+                    return true;
                 return false;
             });
         if (cardIndex !== -1) {
@@ -225,7 +227,7 @@ export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise
     }
 };
 
-export const drawPlayingCards = async (): Promise<void> => {
+export const drawPlayingCard = async (): Promise<void> => {
     const game = await findGame(store.getters.getCurrentGameCode);
     if (game) {
         const gameData = game.data() as Game;
@@ -233,7 +235,7 @@ export const drawPlayingCards = async (): Promise<void> => {
         const playerIndex = players
             .findIndex((player) => player.id === auth.currentUser?.uid);
         const playerDeck = gameData.playerDeck;
-        const cardsToHand = [playerDeck.pop() as PlayingCard, playerDeck.pop() as PlayingCard];
+        const cardsToHand = [playerDeck.pop()!];
         await games.doc(game.id).update("playerDeck", playerDeck);
         players[playerIndex].playingCards =
             [...players[playerIndex].playingCards, ...cardsToHand];
