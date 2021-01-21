@@ -1,11 +1,11 @@
 <template>
     <div class="mt-5 flex flex-col">
         <c-button variant-color="blue" size="sm" @click="drawInfectionCard">
-            <div class="text-xxs">Infektionskarte ziehen</div>
+            <div class="text-xxs">Ziehen</div>
         </c-button>
 
         <c-button v-if="pandemicCardOnHand" class="mt-1" size="sm" @click="drawInfectionCard(true)">
-            <div class="text-xxs">Letzte Infektionskarte ziehen</div>
+            <div class="text-xxs">Unterste ziehen</div>
         </c-button>
 
         <c-button v-if="pandemicCardOnHand" class="mt-1" variant-color="blue" size="sm" @click="shuffleAndBackOnTop">

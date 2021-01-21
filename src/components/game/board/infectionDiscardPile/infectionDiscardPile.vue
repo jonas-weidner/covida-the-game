@@ -1,8 +1,8 @@
 <template>
-    <div class="mt-5">
-        <h2 class="text-lg font-bold text-center">Infektionsablegestapel</h2>
+    <div>
+        <h2 class="text-lg font-bold text-center select-none">Infektionsablegestapel</h2>
         <div class="max-h-24 pt-1 overflow-y-scroll">
-            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700">
+            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700 select-none">
                 Keine Karten im Ablegestapel
             </div>
             <div

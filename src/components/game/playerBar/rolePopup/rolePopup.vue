@@ -1,6 +1,6 @@
 <template>
     <div >
-        <p class="font-bold text-xs cursor-pointer underline pr-2" @click="open">
+        <p class="font-bold text-xs cursor-pointer underline pr-2 select-none" @click="open">
            {{ player.role ? player.role.name : "" }}
         </p>
 
