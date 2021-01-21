@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="board overflow-hidden relative">
+        <div :class="boardClasses()">
             <board :game=game />
 
             <player-discard-pile v-if="game" :game="game" />
@@ -15,22 +15,22 @@
             <next-turn :game="game" />
 
             <div class="infection-wrapper flex justify-between items-end space-x-3">
-                <draw-infection-card />
+                <draw-infection-card :game="game" />
                 <infection-discard-pile v-if="game" :discard-pile="game.infectionDiscardPile" />
             </div>
 
             <medicines :game="game" />
         </div>
 
-        <div v-if="game" class="player-bar">
+        <div v-if="game" :class="playerBarClasses()">
             <player-bar :game="game" />
         </div>
+
+        <resize-button @resize="toggleResize" :expanded="expanded" />
     </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { database } from "@/services/firebase";
 import ExitGame from "@/components/game/board/exitGame";
 import StartGame from "@/components/game/board/startGame";
 import Board from "@/components/game/board";
@@ -43,9 +43,13 @@ import InfectionRate from "@/components/game/board/infectionRate";
 import DrawInfectionCard from "@/components/game/board/drawInfectionCard";
 import NextTurn from "@/components/game/board/nextTurn";
 import Medicines from "@/components/game/board/medicines";
+import ResizeButton from "@/components/game/resizeButton";
+import { Vue, Component, Watch } from "vue-property-decorator";
+import { database } from "@/services/firebase";
 
-export default Vue.extend({
+@Component({
     components: {
+        ResizeButton,
         Medicines,
         NextTurn,
         InfectionDiscardPile,
@@ -57,37 +61,43 @@ export default Vue.extend({
         Outbreaks,
         InfectionRate,
         DrawInfectionCard
-    },
-    watch: {
-        "$route.params.id": {
-            immediate: true,
-            deep: true,
-            handler(id) {
-                if (!this.$store.getters.getCurrentGameCode)
-                    this.$store.commit("setCurrentGameCode", id);
-                this.$bind("games",
-                    database
-                        .collection("games")
-                        .where("gameCode", "==", id)
-                        .limit(1)
-                );
-            }
-        }
-    },
-    data() {
-        return {
-            games: null! as Game[],
-            whatever: null
-        };
-    },
-    computed: {
-        game(): Game {
-            if (this.games && this.games?.length > 0)
-                return this.games[0] as Game;
-            return null!;
-        }
     }
-});
+})
+export default class MainGame extends Vue {
+    @Watch("$route.params.id", { immediate: true })
+    onRouteParams(id: string) {
+        if (!this.$store.getters.getCurrentGameCode)
+            this.$store.commit("setCurrentGameCode", id);
+        this.$bind("games",
+            database
+                .collection("games")
+                .where("gameCode", "==", id)
+                .limit(1)
+        );
+    }
+
+    public games: Game[] = null!;
+    public expanded = false;
+
+    get game(): Game {
+        if (this.games && this.games?.length > 0)
+            return this.games[0] as Game;
+        return null!;
+    }
+
+    public boardClasses(): string {
+        return `board overflow-hidden relative
+            ${this.expanded ? "board-small" : "board-tall"}`;
+    }
+
+    public playerBarClasses(): string {
+        return `player-bar ${this.expanded ? "player-bar-tall" : "player-bar-small"}`;
+    }
+
+    public toggleResize() {
+        this.expanded = !this.expanded;
+    }
+}
 </script>
 
 <style scoped>
@@ -109,9 +119,21 @@ export default Vue.extend({
     top: 0;
     right: 0;
     left: 0;
-    height: calc(80vh - 10px);
     border-bottom: solid 3px black;
-    background-color: #75A7CB;
+    background-color: #54738E;
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
+}
+
+.board-small {
+    height: calc(60vh - 10px) !important;
+}
+
+.board-tall {
+    height: calc(80vh - 10px) !important;
 }
 
 .player-bar {
@@ -120,5 +142,18 @@ export default Vue.extend({
     left: 10px;
     right: 10px;
     height: calc(20vh - 20px);
+    -webkit-transition: height 1s;
+    -moz-transition: height 1s;
+    -ms-transition: height 1s;
+    -o-transition: height 1s;
+    transition: height 1s;
+}
+
+.player-bar-small {
+    height: calc(20vh - 20px) !important;
+}
+
+.player-bar-tall {
+    height: calc(40vh - 20px) !important;
 }
 </style>

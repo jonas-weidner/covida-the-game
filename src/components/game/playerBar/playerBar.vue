@@ -2,10 +2,10 @@
     <div class="flex justify-center h-full w-full">
         <div v-for="player in game.players"
              :key="player.id"
-             class="mx-2 w-1/6 shadow-lg overflow-hidden rounded-lg"
+             class="mx-2 w-1/6 shadow-lg overflow-x-hidden overflow-y-scroll rounded-lg"
         >
-            <div
-                class="flex w-full justify-between text-white items-center rounded-b"
+            <div class="flex w-full justify-between text-white
+                    items-center rounded-b sticky top-0 z-10"
                 :style="{ backgroundColor: roleColor(player) }"
             >
                 <p class="pl-2 py-2 font-bold text-xs">
@@ -20,7 +20,7 @@
                     size="sm"
                     @click="drawPlayingCards"
                 >
-                    +2
+                    +1
                 </c-button>
             </div>
 
@@ -42,7 +42,7 @@ import PlayingCards from "@/components/game/playerBar/playingCards";
 import {
     updateAllPlayers,
     updatePlayerPlayingCards,
-    drawPlayingCards,
+    drawPlayingCard,
     auth
 } from "@/services/firebase";
 
@@ -80,7 +80,7 @@ export default class PlayerBar extends Vue {
     // }
 
     public async drawPlayingCards(): Promise<void> {
-        return await drawPlayingCards();
+        return await drawPlayingCard();
     }
 
     public roleColor(player: Player): string {

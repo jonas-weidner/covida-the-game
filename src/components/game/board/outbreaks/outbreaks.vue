@@ -1,5 +1,5 @@
 <template>
-    <div class="outbreak-wrapper mt-2">
+    <div class="outbreak-wrapper rounded-br-2xl">
         <h2 class="text-lg font-bold">Ausbrüche</h2>
         <div class="flex items-center space-x-3">
             <p class="text-4xl font-bold text-center">
@@ -43,7 +43,9 @@ export default class Outbreaks extends Vue {
 .outbreak-wrapper {
     position: absolute;
     top: 0;
-    left: 10px;
+    left: 0;
+    background-color: rgba(255,255,255,0.3);
+    padding: 10px;
 }
 
 </style>

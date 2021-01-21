@@ -2,7 +2,10 @@
     <div class="player-discard-pile-wrapper mt-3">
         <h3 class="font-bold">Karten im Spielerstapel: {{ game.playerDeck.length }}</h3>
         <h2 class="text-lg font-bold">Spielerablegestapel</h2>
-        <div class="h-48 pt-1 overflow-y-scroll">
+        <div class="max-h-48 pt-1 overflow-y-scroll">
+            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700">
+                Keine Karten im Ablegestapel
+            </div>
             <div class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card, index) in sortedDiscardPile" :key="index">
                 <div v-if="card.type === 'CITY'" class="flex items-center justify-between relative">

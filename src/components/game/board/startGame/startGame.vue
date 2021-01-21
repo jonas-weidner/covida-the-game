@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
+import { Vue, Component, Prop } from "vue-property-decorator";
 import { playingCards } from "@/assets/playingCards";
 import { shuffleCards } from "@/services/gameActions";
 import { City, CityCard, Game, Player, PlayingCard, PlayingCardType } from "@/types";
@@ -23,108 +23,119 @@ import { roles } from "@/assets/roles";
 import { cities } from "@/assets/cities";
 import { infectionCards } from "@/assets/infectionCards";
 
-export default Vue.extend({
-    props: { game: { required: true } },
-    computed: {
-        typedGame(): Game {
-            return this.game as Game;
-        }
-    },
-    methods: {
-        async startGame() {
-            const assigned = await this
-                .assignRoleAndCardsToPlayers(
-                    shuffleCards(JSON.parse(JSON.stringify([...playingCards]))));
-            const deckWithPandemics = this.addPandemicCardsToDeck(assigned.deck);
-            const newCities = this.initializeCities(assigned.players);
-            const decks = this.initializeInfectionDeck(newCities);
-            await Promise.all([
-                setPlayerDeck(deckWithPandemics),
-                initializeCities(decks.cities),
-                initializeInfectionDeck(decks.infectionDeck),
-                initializeInfectionDiscardPile(decks.infectionDiscardPile),
-                startGame()
-            ]);
-        },
-        initializeCities(players: Player[]): City[] {
-            const newCities = JSON.parse(JSON.stringify([...cities]));
-            const atlantaIndex = newCities.findIndex((city) => city.city === "Atlanta");
-            newCities[atlantaIndex].researchStation = true;
-            newCities[atlantaIndex].playersInCity = players;
-            return newCities;
-        },
-        //eslint-disable-next-line
-        initializeInfectionDeck(newCities: City[]): { infectionDeck: CityCard[];
-            infectionDiscardPile: CityCard[]; cities: City[];
-        } {
-            const infectionDeck = shuffleCards(JSON.parse(JSON.stringify([...infectionCards]))) as
-                CityCard[];
-            let infectionDiscardPile: CityCard[] = [];
-            for (let index = 3; index > 0; index--) {
-                const threeCards = infectionDeck.splice(0, 3);
-                infectionDiscardPile = [...infectionDiscardPile, ...threeCards];
-                for (const card of threeCards) {
-                    const cityIndex = newCities.findIndex((city) => city.city === card.city);
-                    const regionString = card.region.toString().toLowerCase();
-                    newCities[cityIndex].diseaseCubes[regionString] = index;
-                }
-            }
+@Component
+export default class StartGame extends Vue {
+    @Prop({ required: true }) game!: Game;
 
-            return {
-                infectionDeck: infectionDeck,
-                infectionDiscardPile: infectionDiscardPile,
-                cities: newCities
-            };
-        },
-        async assignRoleAndCardsToPlayers(deck: PlayingCard[]): Promise<{deck: PlayingCard[];
-        players: Player[];}> {
-            const gameRoles = shuffleCards([...roles]);
-            const players = this.typedGame.players;
-            for (let index = 0; index < players.length; index++) {
-                players[index].role = gameRoles.pop();
-                players[index].playingCards =
-                    [deck.pop() as PlayingCard, deck.pop() as PlayingCard];
-            }
-            const assignedPlayers = this.setStartingPlayer(players);
-            await updateAllPlayers(assignedPlayers);
-            return {
-                deck: deck,
-                players: assignedPlayers
-            };
-        },
-        setStartingPlayer(players: Player[]): Player[] {
-            const populations: number[] = [];
-            players.forEach((player) => {
-                player.playingCards
-                    .filter((card) => card.type === PlayingCardType.City)
-                    .forEach((card) => populations.push(card.city!.population));
-            });
-            const maxPopulation = populations.sort((a, b) => b-a)[0];
-
-            const playerIndex = players.findIndex((player) => {
-                return player.playingCards!
-                    .filter((card: PlayingCard) => card.type === PlayingCardType.City)
-                    .find((card: PlayingCard) => card.city!.population === maxPopulation);
-            });
-            if (playerIndex) players[playerIndex].activeTurn = true;
-            else players[0].activeTurn = true;
-            return players;
-        },
-        addPandemicCardsToDeck(deck: PlayingCard[]): PlayingCard[] {
-            const pandemicCards = this.typedGame.difficulty;
-            const splitSize = Math.round(deck.length/pandemicCards);
-            const splitDeck: PlayingCard[][] = [];
-            for (let index = 0; index < pandemicCards-1; index++)
-                splitDeck.push(deck.splice(0, random.int(splitSize-2, splitSize+2)));
-            splitDeck.push(deck);
-            let fullDeck: PlayingCard[] = [];
-            for (let index = 0; index < splitDeck.length; index++) {
-                const pandemicPosition = random.int(0, splitDeck[index].length-1);
-                splitDeck[index].splice(pandemicPosition, 0, { type: PlayingCardType.Pandemic });
-                fullDeck = [...fullDeck, ...splitDeck[index]];
-            }
-            return fullDeck;
-        }
+    public async startGame() {
+        const assigned = await this
+            .assignRoleAndCardsToPlayers(
+                shuffleCards(JSON.parse(JSON.stringify([...playingCards]))));
+        const deckWithPandemics = this.addPandemicCardsToDeck(assigned.deck);
+        const newCities = this.initializeCities(assigned.players);
+        const decks = this.initializeInfectionDeck(newCities);
+        await Promise.all([
+            setPlayerDeck(deckWithPandemics),
+            initializeCities(decks.cities),
+            initializeInfectionDeck(decks.infectionDeck),
+            initializeInfectionDiscardPile(decks.infectionDiscardPile),
+            startGame()
+        ]);
     }
-});
+
+    private initializeCities(players: Player[]): City[] {
+        const newCities = JSON.parse(JSON.stringify([...cities]));
+        const atlantaIndex = newCities.findIndex((city) => city.city === "Atlanta");
+        newCities[atlantaIndex].researchStation = true;
+        newCities[atlantaIndex].playersInCity = players;
+        return newCities;
+    }
+
+    //eslint-disable-next-line
+    private initializeInfectionDeck(newCities: City[]): { infectionDeck: CityCard[];
+        infectionDiscardPile: CityCard[]; cities: City[];
+    } {
+        const infectionDeck = shuffleCards(JSON.parse(JSON.stringify([...infectionCards]))) as
+            CityCard[];
+        let infectionDiscardPile: CityCard[] = [];
+        for (let index = 3; index > 0; index--) {
+            const threeCards = infectionDeck.splice(0, 3);
+            infectionDiscardPile = [...infectionDiscardPile, ...threeCards];
+            for (const card of threeCards) {
+                const cityIndex = newCities.findIndex((city) => city.city === card.city);
+                const regionString = card.region.toString().toLowerCase();
+                newCities[cityIndex].diseaseCubes[regionString] = index;
+            }
+        }
+
+        return {
+            infectionDeck: infectionDeck,
+            infectionDiscardPile: infectionDiscardPile,
+            cities: newCities
+        };
+    }
+
+    private async assignRoleAndCardsToPlayers(deck: PlayingCard[]): Promise<{deck: PlayingCard[];
+        players: Player[];}> {
+        const gameRoles = shuffleCards([...roles]);
+        const players = this.game.players;
+        for (let index = 0; index < players.length; index++) {
+            players[index].role = gameRoles.pop();
+            const handCards: PlayingCard[] = [];
+            console.log(this.getNumberOfStartingCards());
+            for (let i = 0; i < this.getNumberOfStartingCards(); i++)
+                handCards.push(deck.pop()!);
+            console.log(handCards);
+            players[index].playingCards = [...handCards];
+        }
+        const assignedPlayers = this.setStartingPlayer(players);
+        await updateAllPlayers(assignedPlayers);
+        return {
+            deck: deck,
+            players: assignedPlayers
+        };
+    }
+
+    private getNumberOfStartingCards(): number {
+        const numPlayers = this.game.numberOfPlayers;
+        if (numPlayers === 2) return 4;
+        else if (numPlayers === 3) return 3;
+        return 2;
+    }
+
+    private setStartingPlayer(players: Player[]): Player[] {
+        const populations: number[] = [];
+        players.forEach((player) => {
+            player.playingCards
+                .filter((card) => card.type === PlayingCardType.City)
+                .forEach((card) => populations.push(card.city!.population));
+        });
+        const maxPopulation = populations.sort((a, b) => b-a)[0];
+
+        const playerIndex = players.findIndex((player) => {
+            return player.playingCards!
+                .filter((card: PlayingCard) => card.type === PlayingCardType.City)
+                .find((card: PlayingCard) => card.city!.population === maxPopulation);
+        });
+        if (playerIndex) players[playerIndex].activeTurn = true;
+        else players[0].activeTurn = true;
+        return players;
+    }
+
+    private addPandemicCardsToDeck(deck: PlayingCard[]): PlayingCard[] {
+        const pandemicCards = this.game.difficulty;
+        const splitSize = Math.round(deck.length/pandemicCards);
+        const splitDeck: PlayingCard[][] = [];
+        for (let index = 0; index < pandemicCards-1; index++)
+            splitDeck.push(deck.splice(0, random.int(splitSize-2, splitSize+2)));
+        splitDeck.push(deck);
+        let fullDeck: PlayingCard[] = [];
+        for (let index = 0; index < splitDeck.length; index++) {
+            const pandemicPosition = random.int(0, splitDeck[index].length-1);
+            splitDeck[index].splice(pandemicPosition, 0, { type: PlayingCardType.Pandemic });
+            fullDeck = [...fullDeck, ...splitDeck[index]];
+        }
+        return fullDeck;
+    }
+}
 </script>

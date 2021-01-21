@@ -1,8 +1,8 @@
 <template>
-    <div class="h-36 overflow-y-scroll">
+    <div>
         <Container @drop="onDrop" group-name="playingCards" :get-child-payload="getChildPayload">
             <Draggable class="rounded bg-gray-200 font-semibold mt-1 overflow-hidden"
-                 v-for="(card, index) in player.playingCards" :key="index">
+                 v-for="(card, index) in sortedPlayingCards" :key="index">
                 <div class="draggable-item cursor-pointer">
                     <div v-if="card.type === 'CITY'" class="flex items-center justify-end relative">
                         <div :class="regionClass(card.city.region)" />
@@ -81,6 +81,11 @@ export default class PlayingCards extends Vue {
     @Prop({ required: true }) readonly game!: Game;
     @Prop() player!: Player;
 
+    get sortedPlayingCards(): PlayingCard[] {
+        if (this.player) return JSON.parse(JSON.stringify(this.player.playingCards)).reverse();
+        return [];
+    }
+
     get currentUser() {
         const authenticated = auth.currentUser?.uid;
         return authenticated === this.player.id;
@@ -110,7 +115,7 @@ export default class PlayingCards extends Vue {
     public onDrop(dropResult: { removedIndex: number; addedIndex: number; payload: PlayingCard }): void {
         if (dropResult.removedIndex != null || dropResult.addedIndex != null)
             this.$emit("player-deck-update", {
-                newDeck: applyDrag(this.player.playingCards, dropResult),
+                newDeck: applyDrag(this.sortedPlayingCards, dropResult).reverse(),
                 dropResult: dropResult
             });
     }

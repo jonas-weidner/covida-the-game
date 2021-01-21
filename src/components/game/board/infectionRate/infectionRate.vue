@@ -1,5 +1,5 @@
 <template>
-    <div class="infection-rate-wrapper mt-2">
+    <div class="infection-rate-wrapper rounded-bl-2xl">
         <h2 class="text-lg font-bold text-end">Infektionsgrad</h2>
         <div class="flex items-center justify-end space-x-3">
             <p class="text-4xl font-bold text-center">
@@ -43,7 +43,9 @@ export default class InfectionRate extends Vue {
 .infection-rate-wrapper {
     position: absolute;
     top: 0;
-    right: 10px;
+    right: 0;
+    background-color: rgba(255,255,255,0.3);
+    padding: 10px;
 }
 
 </style>
