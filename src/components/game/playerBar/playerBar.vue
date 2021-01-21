@@ -2,13 +2,13 @@
     <div class="flex justify-center h-full w-full">
         <div v-for="player in game.players"
              :key="player.id"
-             class="mx-2 w-1/6 shadow-lg overflow-x-hidden overflow-y-scroll rounded-lg"
+             class="mx-2 w-1/6 bg-white p-2 shadow-2xl overflow-x-hidden overflow-y-scroll rounded-lg"
         >
             <div class="flex w-full justify-between text-white
-                    items-center rounded-b sticky top-0 z-10"
+                    items-center rounded sticky top-0 z-10"
                 :style="{ backgroundColor: roleColor(player) }"
             >
-                <p class="pl-2 py-2 font-bold text-xs">
+                <p class="pl-2 py-2 font-bold text-xs select-none">
                     {{ player.name }}
                 </p>
                 <role-popup :player="player" />

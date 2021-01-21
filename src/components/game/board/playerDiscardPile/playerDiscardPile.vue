@@ -1,16 +1,22 @@
 <template>
-    <div class="player-discard-pile-wrapper mt-3">
-        <h3 class="font-bold">Karten im Spielerstapel: {{ game.playerDeck.length }}</h3>
-        <h2 class="text-lg font-bold">Spielerablegestapel</h2>
-        <div class="max-h-48 pt-1 overflow-y-scroll">
-            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700">
+    <div class="player-discard-pile-wrapper shadow-2xl rounded-tr-2xl"
+         @mouseover="show = true"
+         @mouseleave="show = false"
+    >
+        <h2 class="text-lg font-bold select-none">Spielerablegestapel</h2>
+        <transition name="slide-fade" mode="out-in">
+        <div v-if="show" class="max-h-44 pt-2 px-2 pb-1 overflow-y-scroll
+            overflow-x-hidden bg-white shadow-lg rounded-lg">
+            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700 select-none">
                 Keine Karten im Ablegestapel
             </div>
             <div class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card, index) in sortedDiscardPile" :key="index">
                 <div v-if="card.type === 'CITY'" class="flex items-center justify-between relative">
                     <div :class="regionClass(card.city.region)" />
-                    <div class="w-4/5 pl-8 text-sm text-left py-1">{{ card.city.city }}</div>
+                    <div class="w-4/5 pl-8 text-sm text-left py-1 select-none">
+                        {{ card.city.city }}
+                    </div>
                     <c-icon-button
                         v-if="isCrisisManager"
                         variant-color="blue"
@@ -35,6 +41,12 @@
                 </div>
             </div>
         </div>
+        </transition>
+        <transition name="slide-fade" mode="out-in">
+            <h3 v-if="show" class="font-bold select-none mt-2 text-sm">
+                Karten im Spielerstapel: {{ game.playerDeck.length }}
+            </h3>
+        </transition>
     </div>
 </template>
 
@@ -47,6 +59,8 @@ import { auth, pickupDiscardedPlayingCard } from "@/services/firebase";
 @Component({ components: { ActionPopup } })
 export default class PlayingCards extends Vue {
     @Prop({ required: true }) game!: Game;
+
+    public show = false;
 
     get sortedDiscardPile() {
         return JSON.parse(JSON.stringify(this.game.playerDiscardPile)).reverse();
@@ -68,12 +82,14 @@ export default class PlayingCards extends Vue {
 }
 </script>
 
-<style scoped>
+<style>
 .player-discard-pile-wrapper {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
+    bottom: 0;
+    left: 0;
     width: 15%;
+    padding: 10px;
+    background-color: #EBF0FC;
 }
 
 .region {
@@ -98,5 +114,16 @@ export default class PlayingCards extends Vue {
 
 .BLACK {
     background-color: black;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease !important;
+}
+.slide-fade-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+    transform: translateY(50px) !important;
+    opacity: 0 !important;
 }
 </style>

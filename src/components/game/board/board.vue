@@ -1,8 +1,10 @@
 <template>
-    <panZoom @init="onInit" :options="{ zoomDoubleClickSpeed: 1, beforeMouseDown: shouldPan }">
+    <panZoom @init="onInit" :options="panZoomOptions">
         <div class="flex justify-center items-center relative">
             <img src="@/assets/world-map.jpg" width="3500px" height="1750px"
-                 style="filter: brightness(70%);" />
+                 style="filter: brightness(45%);"
+                 class="select-none"
+            />
 
             <div
                 v-for="city in citiesWithPosition" :key="city.city"
@@ -91,18 +93,32 @@ export default class Board extends Vue {
     public researchFocus: string = null!;
     public colors: string[] = ["black", "blue", "red", "yellow"];
     public panZoom: any = null!;
-
-    @Watch("$store.getters.getGoToPlayer", { deep: true })
-    onChildChanged(val: any, oldVal: any) {
-        if (val && !oldVal) {
-            console.log(val.top/100, val.left/100);
-            this.panZoom.smoothMoveTo(0, 800);
-            this.$store.commit("setGoToPlayer", null!);
-        }
+    public panZoomOptions = {
+        zoomDoubleClickSpeed: 1,
+        beforeMouseDown: this.shouldPan,
+        minZoom: 1.05,
+        transformOrigin: {
+            x: 0.5,
+            y: 0.5
+        },
+        initialY: 0.5,
+        initialX: 0.5,
+        bounds: true,
+        boundsPadding: 0.1
     }
+
+    // @Watch("$store.getters.getGoToPlayer", { deep: true })
+    // onChildChanged(val: any, oldVal: any) {
+    //     if (val && !oldVal) {
+    //         console.log(val.top/100, val.left/100);
+    //         this.panZoom.smoothMoveTo(0, 800);
+    //         this.$store.commit("setGoToPlayer", null!);
+    //     }
+    // }
 
     public onInit(instance) {
         this.panZoom = instance;
+        this.panZoom.moveTo(0.5, 0.5);
     }
 
     get citiesWithPosition(): City[] {
@@ -125,7 +141,7 @@ export default class Board extends Vue {
     }
 
     public cityPopoverClasses(position: string): string {
-        return `city-popover-${position} rounded-sm shadow-lg w-11 opacity-80`;
+        return `city-popover-${position} rounded-sm shadow-lg w-11`;
     }
 
     public async changeDiseaseLevel(city: City, color: string, decrease?: boolean): Promise<void> {
