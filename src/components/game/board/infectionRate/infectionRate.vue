@@ -5,10 +5,9 @@
     >
         <div class="flex space-x-1.5 justify-end">
             <p class="text-lg font-bold select-none">Infektionsgrad</p>
-            <transition name="slide-x" mode="out-in">
-                <p v-if="!show" class="text-lg font-bold select-none">
-                    {{ game.infectionRate }}</p>
-            </transition>
+            <p v-if="!show" class="text-lg font-bold select-none">
+                {{ game.infectionRate }}
+            </p>
         </div>
         <transition name="slide-fade" mode="out-in">
             <div v-if="show" class="flex items-center justify-end space-x-3">
