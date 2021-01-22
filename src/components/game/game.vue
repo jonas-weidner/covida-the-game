@@ -133,11 +133,11 @@ export default class MainGame extends Vue {
     top: 15px;
     right: 15px;
     left: 15px;
-    -webkit-transition: height 0.3s;
-    -moz-transition: height 0.3s;
-    -ms-transition: height 0.3s;
-    -o-transition: height 0.3s;
-    transition: height 0.3s;
+    -webkit-transition: height 0.1s;
+    -moz-transition: height 0.1s;
+    -ms-transition: height 0.1s;
+    -o-transition: height 0.1s;
+    transition: height 0.1s;
 }
 
 .board-small {
@@ -145,7 +145,7 @@ export default class MainGame extends Vue {
 }
 
 .board-tall {
-    height: calc(80vh - 25px) !important;
+    height: calc(82vh - 25px) !important;
 }
 
 .player-bar {
@@ -154,15 +154,15 @@ export default class MainGame extends Vue {
     left: 10px;
     right: 10px;
     height: calc(20vh - 10px);
-    -webkit-transition: height 0.3s;
-    -moz-transition: height 0.3s;
-    -ms-transition: height 0.3s;
-    -o-transition: height 0.3s;
-    transition: height 0.3s;
+    -webkit-transition: height 0.1s;
+    -moz-transition: height 0.1s;
+    -ms-transition: height 0.1s;
+    -o-transition: height 0.1s;
+    transition: height 0.1s;
 }
 
 .player-bar-small {
-    height: calc(20vh - 10px) !important;
+    height: calc(18vh - 10px) !important;
 }
 
 .player-bar-tall {

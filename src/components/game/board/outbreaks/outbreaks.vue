@@ -4,9 +4,7 @@
          @mouseleave="show = false"
     >
         <div class="flex space-x-1.5">
-            <transition name="slide-fade" mode="out-in">
-                <p v-if="!show" class="text-lg font-bold select-none">{{ game.outbreaks }}</p>
-            </transition>
+            <p v-if="!show" class="text-lg font-bold select-none">{{ game.outbreaks }}</p>
             <p class="text-lg font-bold select-none">Ausbrüche</p>
         </div>
         <transition name="slide-fade" mode="out-in">
