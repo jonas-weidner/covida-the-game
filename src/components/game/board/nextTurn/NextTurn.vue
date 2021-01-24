@@ -1,11 +1,18 @@
 <template>
-    <div
-        class="next-turn-wrapper"
-        v-if="hasActiveTurn"
-    >
-        <c-button variant-color="blue" size="sm" @click="nextPlayer">
-            <div class="text-xs">Nächster Spieler</div>
-        </c-button>
+    <div>
+        <c-tooltip has-arrow label="Nächster Spieler" placement="right">
+            <c-icon-button
+                :isRound="true"
+                variant-color="blue"
+                bg="blue.800"
+                color="white"
+                size="sm"
+                icon="forward"
+                aria-label="Next player"
+                @click="nextPlayer"
+                :disabled="!hasActiveTurn"
+            />
+        </c-tooltip>
     </div>
 </template>
 
@@ -29,12 +36,3 @@ export default class NextTurn extends Vue {
     }
 }
 </script>
-
-<style scoped>
-.next-turn-wrapper {
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-</style>

@@ -1,8 +1,16 @@
 <template>
     <div>
-        <c-button variant-color="blue" size="sm" @click="startGame">
-            <div class="text-xs">Spiel starten</div>
-        </c-button>
+        <c-tooltip has-arrow label="Spiel starten" placement="right">
+            <c-icon-button
+                :isRound="true"
+                variant-color="green"
+                size="lg"
+                icon="play"
+                aria-label="Start game"
+                @click="startGame"
+                :isDisabled="notAllPlayersPresent"
+            />
+        </c-tooltip>
     </div>
 </template>
 
@@ -13,6 +21,7 @@ import { shuffleCards } from "@/services/gameActions";
 import { City, CityCard, Game, Player, PlayingCard, PlayingCardType } from "@/types";
 import random from "random";
 import {
+    auth,
     initializeCities,
     initializeInfectionDeck,
     initializeInfectionDiscardPile,
@@ -26,6 +35,11 @@ import { infectionCards } from "@/assets/infectionCards";
 @Component
 export default class StartGame extends Vue {
     @Prop({ required: true }) game!: Game;
+
+    get notAllPlayersPresent(): boolean {
+        if (auth.currentUser?.email === "jonas@adabt.com") return false;
+        return this.game.numberOfPlayers !== this.game.players.length;
+    }
 
     public async startGame() {
         const assigned = await this

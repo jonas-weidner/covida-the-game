@@ -36,6 +36,7 @@ export interface CityCard {
 }
 
 export interface Game {
+    id?: string;
     gameCode: string;
     numberOfPlayers: number;
     difficulty: number;
@@ -50,6 +51,7 @@ export interface Game {
     outbreaks: number;
     cities: City[];
     diseaseStates: DiseaseStates;
+    lastGameStates: Game[];
 }
 
 export interface DiseaseStates {
