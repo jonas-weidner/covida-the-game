@@ -1,14 +1,13 @@
 <template>
-    <div class="player-discard-pile-wrapper shadow-2xl rounded-tr-2xl"
+    <div class="w-56"
          @mouseover="show = true"
          @mouseleave="show = false"
     >
-        <h2 class="text-lg font-bold select-none">Spielerablegestapel</h2>
+        <h2 class="font-bold select-none">Ablegestapel</h2>
         <transition name="slide-fade" mode="out-in">
-        <div v-if="show" class="max-h-44 pt-2 px-2 pb-1 overflow-y-scroll
-            overflow-x-hidden bg-white shadow-lg rounded-lg">
-            <div v-if="sortedDiscardPile.length === 0" class="text-xs text-gray-700 select-none">
-                Keine Karten im Ablegestapel
+        <div :class="discardClasses">
+            <div v-if="sortedDiscardPile.length === 0" class="text-xs font-semibold select-none">
+                Keine Karten im Stapel
             </div>
             <div class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card, index) in sortedDiscardPile" :key="index">
@@ -42,11 +41,6 @@
             </div>
         </div>
         </transition>
-        <transition name="slide-fade" mode="out-in">
-            <h3 v-if="show" class="font-bold select-none mt-2 text-sm">
-                Karten im Spielerstapel: {{ game.playerDeck.length }}
-            </h3>
-        </transition>
     </div>
 </template>
 
@@ -66,6 +60,11 @@ export default class PlayingCards extends Vue {
         return JSON.parse(JSON.stringify(this.game.playerDiscardPile)).reverse();
     }
 
+    get discardClasses(): string {
+        return `${ this.show ? "max-h-56" : "max-h-10" } pt-2 px-2 pb-1 overflow-y-scroll
+            overflow-x-hidden bg-white shadow-lg rounded-lg height-animation`;
+    }
+
     get isCrisisManager(): boolean {
         const currentId = auth.currentUser?.uid;
         const currentPlayer = this.game.players.find((player) => player.id === currentId);
@@ -83,14 +82,6 @@ export default class PlayingCards extends Vue {
 </script>
 
 <style>
-.player-discard-pile-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 15%;
-    padding: 10px;
-    background-color: #EBF0FC;
-}
 
 .region {
     position: absolute;
@@ -100,12 +91,20 @@ export default class PlayingCards extends Vue {
     width: 20px;
 }
 
+.height-animation {
+    -webkit-transition: max-height .4s;
+    -moz-transition: max-height .4s;
+    -ms-transition: max-height .4s;
+    -o-transition: max-height .4s;
+    transition: max-height .4s;
+}
+
 .BLUE {
     background-color: blue;
 }
 
 .RED {
-    background-color: red;
+    background-color: #EF0C5B;
 }
 
 .YELLOW {

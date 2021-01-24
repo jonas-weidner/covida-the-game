@@ -1,15 +1,18 @@
 <template>
-    <div class="undo-button-wrapper" v-if="game && game.lastGameStates.length > 0">
-        <c-icon-button
-            :isRound="true"
-            variant-color="blue"
-            bg="blue.800"
-            color="white"
-            size="lg"
-            aria-label="Undo"
-            icon="arrow-down"
-            @click="undo"
-        />
+    <div>
+        <c-tooltip has-arrow label="Rückgängig machen" placement="right">
+            <c-icon-button
+                :isRound="true"
+                variant-color="blue"
+                bg="blue.800"
+                color="white"
+                size="sm"
+                icon="undo"
+                aria-label="Undo"
+                @click="undo"
+                :isDisabled="!game || game.lastGameStates.length === 0"
+            />
+        </c-tooltip>
     </div>
 </template>
 
@@ -26,12 +29,3 @@ export default class UndoButton extends Vue {
     }
 }
 </script>
-
-<style scoped>
-.undo-button-wrapper {
-    position: absolute;
-    z-index: 10;
-    bottom: 2%;
-    left: 2%;
-}
-</style>

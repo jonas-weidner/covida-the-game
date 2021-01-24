@@ -2,7 +2,7 @@
     <panZoom @init="onInit" :options="panZoomOptions">
         <div class="flex justify-center items-center relative">
             <img src="@/assets/world-map.jpg" width="3500px" height="1750px"
-                 style="filter: brightness(45%);"
+                 style="filter: brightness(70%);"
                  class="select-none"
             />
 
@@ -36,7 +36,7 @@
                     @mouseover="focused = city.city"
                     @mouseleave="focused = null"
                 >
-                    <div class="font-bold">{{ city.city }}</div>
+                    <city-modal :game="game" :city="city" />
                     <div class="flex items-center justify-between leading-none">
                         <div
                             v-for="color in colors" :key="color"
@@ -75,13 +75,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import { changeDiseaseLevel, exitGame, updateCities } from "@/services/firebase";
 import { City, Game, Region } from "@/types";
 import { Container, Draggable } from "vue-smooth-dnd";
+import CityModal from "@/components/game/board/cityModal";
 
 @Component({
     components: {
+        CityModal,
         Container,
         Draggable
     }
@@ -106,15 +108,6 @@ export default class Board extends Vue {
         bounds: true,
         boundsPadding: 0.1
     }
-
-    // @Watch("$store.getters.getGoToPlayer", { deep: true })
-    // onChildChanged(val: any, oldVal: any) {
-    //     if (val && !oldVal) {
-    //         console.log(val.top/100, val.left/100);
-    //         this.panZoom.smoothMoveTo(0, 800);
-    //         this.$store.commit("setGoToPlayer", null!);
-    //     }
-    // }
 
     public onInit(instance) {
         this.panZoom = instance;

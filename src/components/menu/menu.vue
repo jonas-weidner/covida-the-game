@@ -1,5 +1,5 @@
 <template>
-    <div class="fullscreen flex items-center justify-center relative space-x-20">
+    <div class="fullscreen flex items-center justify-center relative xl:space-x-20">
         <div class="bg-image relative">
             <div class="overlay"></div>
         </div>
