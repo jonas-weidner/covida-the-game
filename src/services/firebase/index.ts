@@ -290,7 +290,7 @@ export const drawInfectionCard = async (last?: boolean): Promise<void> => {
     const game = gameData();
     if (game) {
         const infectionDeck = [...game.infectionDeck];
-        const newCard = last ? infectionDeck.shift() : infectionDeck.pop();
+        const newCard = last ? infectionDeck.pop() : infectionDeck.shift();
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         const infectionDiscard = [...game.infectionDiscardPile, newCard];
         await games.doc(game.id).update("infectionDiscardPile", infectionDiscard);
