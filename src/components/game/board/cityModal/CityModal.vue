@@ -31,7 +31,7 @@
                     <div v-if="city.playersInCity.length > 0">
                         <div class="font-bold text-xl mt-8 mb-3">Spieler in Stadt</div>
                         <div v-for="player in city.playersInCity" :key="player.id"
-                            class="flex items-center justify-between space-x-5"
+                            class="flex items-center justify-between space-x-5 mb-3"
                         >
                             <div class="w-2/5 flex items-center justify-between">
                                 <div class="w-8 h-8 rounded-full"

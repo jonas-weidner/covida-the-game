@@ -302,7 +302,7 @@ export const shuffleAndBackOnTop = async (): Promise<void> => {
     const game = gameData();
     if (game) {
         const infectionDiscard = shuffleCards([...game.infectionDiscardPile]);
-        const infectionDeck = [...game.infectionDeck, ...infectionDiscard];
+        const infectionDeck = [...infectionDiscard, ...game.infectionDeck];
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         await games.doc(game.id).update("infectionDiscardPile", []);
         await saveCurrentGameState(game);
