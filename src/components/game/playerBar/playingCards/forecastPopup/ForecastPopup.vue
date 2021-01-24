@@ -106,7 +106,7 @@ export default class ForecastPopup extends Vue {
 }
 
 .RED {
-    background-color: red;
+    background-color: #EF0C5B;
 }
 
 .YELLOW {

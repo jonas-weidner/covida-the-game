@@ -21,19 +21,19 @@
 </template>
 
 <script lang="ts">
-import { Vue } from "vue-property-decorator";
-export default Vue.extend({
-    props: ["action"],
-    data () {
-        return { isOpen: false };
-    },
-    methods: {
-        open() {
-            this.isOpen = true;
-        },
-        close() {
-            this.isOpen = false;
-        }
+import { Vue, Prop, Component } from "vue-property-decorator";
+import { ActionCard } from "@/types";
+
+@Component
+export default class ActionPopup extends Vue {
+    @Prop({ required: true }) action!: ActionCard;
+    public isOpen = false;
+
+    open() {
+        this.isOpen = true;
     }
-});
+    close() {
+        this.isOpen = false;
+    }
+}
 </script>

@@ -1,8 +1,17 @@
 <template>
     <div>
-        <c-button variant-color="blue" size="sm" @click="exitGame">
-            <div class="text-xs">Spiel verlassen</div>
-        </c-button>
+        <c-tooltip has-arrow label="Exit game" placement="right">
+            <c-icon-button
+                :isRound="true"
+                variant-color="red"
+                bg="red.700"
+                color="white"
+                size="sm"
+                icon="sign-out-alt"
+                aria-label="Exit game"
+                @click="exitGame"
+            />
+        </c-tooltip>
     </div>
 </template>
 
