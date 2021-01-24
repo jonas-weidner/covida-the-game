@@ -178,6 +178,10 @@ export const setPlayerDeck = async (deck: PlayingCard[]): Promise<void> => {
     await games.doc(gameId()).update("playerDeck", deck);
 };
 
+export const setPlayerDiscardPile = async (deck: PlayingCard[]): Promise<void> => {
+    await games.doc(gameId()).update("playerDiscardPile", deck);
+};
+
 export const initializeCities = async (cityArray: City[]): Promise<void> => {
     await games.doc(gameId()).set({ cities: cityArray }, { merge: true });
 };
@@ -237,6 +241,7 @@ export const playHandCard = async (card: PlayingCard, remove?: boolean): Promise
             if (!remove) await games.doc(game.id)
                 .update("playerDiscardPile", [...game.playerDiscardPile, card]);
         }
+        await saveCurrentGameState(game);
     }
 };
 
@@ -252,6 +257,7 @@ export const drawPlayingCard = async (): Promise<void> => {
         players[playerIndex].playingCards =
             [...players[playerIndex].playingCards, ...cardsToHand];
         await games.doc(game.id).update("players", players);
+        await saveCurrentGameState(game);
     }
 };
 
@@ -266,6 +272,7 @@ export const pickupDiscardedPlayingCard = async (cardIndex: number): Promise<voi
         players[playerIndex].playingCards = [...players[playerIndex].playingCards, ...cardToUser];
         await games.doc(game.id).update("playerDiscardPile", discardPile);
         await games.doc(game.id).update("players", players);
+        await saveCurrentGameState(game);
     }
 };
 
@@ -298,6 +305,7 @@ export const shuffleAndBackOnTop = async (): Promise<void> => {
         const infectionDeck = [...game.infectionDeck, ...infectionDiscard];
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         await games.doc(game.id).update("infectionDiscardPile", []);
+        await saveCurrentGameState(game);
     }
 };
 
@@ -324,6 +332,7 @@ export const nextPlayer = async (): Promise<void> => {
         const nextIndex = (playerIndex + 1) < players.length ? playerIndex + 1 : 0;
         players[nextIndex].activeTurn = true;
         await games.doc(game.id).update("players", players);
+        await saveCurrentGameState(game);
     }
 };
 

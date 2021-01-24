@@ -9,7 +9,7 @@
                 {{ game.infectionRate }}
             </p>
         </div>
-        <transition name="slide-fade" mode="out-in">
+        <transition name="slide-x" mode="out-in">
             <div v-if="show" class="flex items-center justify-end space-x-3">
                 <p class="text-4xl font-bold text-center select-none">
                     {{ game.infectionRate }}
@@ -55,7 +55,7 @@ export default class InfectionRate extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .infection-rate-wrapper {
     position: absolute;
     top: 0;
@@ -71,7 +71,7 @@ export default class InfectionRate extends Vue {
     transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
 }
 .slide-x-enter, .slide-x-leave-to {
-    transform: translateX(10px) !important;
+    transform: translateX(50px) !important;
     opacity: 0 !important;
 }
 </style>

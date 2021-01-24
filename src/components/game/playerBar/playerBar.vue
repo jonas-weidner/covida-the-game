@@ -12,16 +12,6 @@
                     {{ player.name }}
                 </p>
                 <role-popup :player="player" />
-
-                <c-button
-                    v-if="activePlayer(player)"
-                    class="p-0 m-0"
-                    variant-color="blue"
-                    size="sm"
-                    @click="drawPlayingCards"
-                >
-                    +1
-                </c-button>
             </div>
 
             <playing-cards
@@ -71,18 +61,6 @@ export default class PlayerBar extends Vue {
         return player.activeTurn && current === player.id;
     }
 
-    // public goToPlayer(player: Player): void {
-    //     const cityWithPlayer = this.game.cities.find((city) => {
-    //         return city.playersInCity.find((play) => play.id === player.id);
-    //     });
-    //     console.log(player);
-    //     this.$store.commit("setGoToPlayer", cityWithPlayer?.location);
-    // }
-
-    public async drawPlayingCards(): Promise<void> {
-        return await drawPlayingCard();
-    }
-
     public roleColor(player: Player): string {
         if (player.role) return player.role?.color;
         return "#1972FF";
@@ -96,7 +74,7 @@ export default class PlayerBar extends Vue {
             updatePlayerPlayingCards(action.newDeck, player);
         } else {
             const alteredPlayer = { ...player };
-            alteredPlayer.playingCards = action.newDeck;
+            alteredPlayer.playingCards = action.newDeck.reverse();
             this.playersWithDeckUpdates.push(alteredPlayer);
         }
     }

@@ -1,34 +1,47 @@
 <template>
-    <div class="game-bg">
-        <div :class="boardClasses()">
-            <board :game=game />
+    <div>
+        <splitpanes class="default-theme game-bg" horizontal>
+            <pane :size="100 - paneSize" min-size="50" :class="boardClasses()">
+                <board :game=game />
 
-            <player-discard-pile v-if="game" :game="game" />
-            <outbreaks v-if="game" :game="game" />
-            <infection-rate v-if="game" :game=game />
+                <outbreaks v-if="game" :game="game" />
+                <infection-rate v-if="game" :game=game />
 
-            <div class="game-button-wrapper">
-                <start-game v-if="game && !game.started" :game=game />
-<!--                <exit-game v-if="game && game.started" />-->
-            </div>
+                <div class="game-button-wrapper rounded-r-lg flex flex-col space-y-2">
+                    <start-game v-if="game && !game.started" :game=game />
+                    <exit-game v-if="game && game.started" />
+                    <undo-button v-if="game && game.started" :game="game" />
+                    <next-turn v-if="game && game.started" :game="game" />
+                </div>
 
-<!--            <next-turn :game="game" />-->
+                <div class="playing-cards-wrapper rounded-tr-2xl shadow-2xl">
+                    <h2 class="text-lg font-bold select-none text-center">Spielerkarten</h2>
+                    <div class="flex justify-between items-end space-x-4">
+                        <player-discard-pile v-if="game" :game="game" />
+                        <playing-card-deck :game="game" />
+                    </div>
+                </div>
 
-            <div class="infection-wrapper rounded-tl-2xl shadow-2xl
-                   flex justify-between items-end space-x-3">
-                <draw-infection-card :game="game" />
-                <infection-discard-pile v-if="game" :discard-pile="game.infectionDiscardPile" />
-            </div>
+                <div class="infection-wrapper rounded-tl-2xl shadow-2xl">
+                    <h2 class="text-lg font-bold select-none text-center">Infektionskarten</h2>
+                    <div class="flex justify-between items-end space-x-4">
+                        <draw-infection-card :game="game" />
+                        <infection-discard-pile
+                            v-if="game"
+                            :game="game"
+                        />
+                    </div>
+                </div>
 
-<!--            <medicines :game="game" />-->
-        </div>
+                <medicines :game="game" />
+            </pane>
 
-        <div v-if="game" :class="playerBarClasses()">
-            <player-bar :game="game" />
-        </div>
+            <pane :size="paneSize" min-size="15" v-if="game" :class="playerBarClasses()">
+                <player-bar :game="game" />
+            </pane>
 
+        </splitpanes>
         <resize-button @resize="toggleResize" :expanded="expanded" />
-        <undo-button :game="game" />
     </div>
 </template>
 
@@ -47,8 +60,11 @@ import NextTurn from "@/components/game/board/nextTurn";
 import Medicines from "@/components/game/board/medicines";
 import ResizeButton from "@/components/game/resizeButton";
 import UndoButton from "@/components/game/undoButton";
+import PlayingCardDeck from "@/components/game/board/playingCardDeck";
 import { Vue, Component, Watch } from "vue-property-decorator";
 import { database } from "@/services/firebase";
+import { Splitpanes, Pane } from "splitpanes";
+import "splitpanes/dist/splitpanes.css";
 
 @Component({
     components: {
@@ -64,7 +80,10 @@ import { database } from "@/services/firebase";
         Outbreaks,
         InfectionRate,
         DrawInfectionCard,
-        UndoButton
+        UndoButton,
+        Splitpanes,
+        Pane,
+        PlayingCardDeck
     }
 })
 export default class MainGame extends Vue {
@@ -82,6 +101,7 @@ export default class MainGame extends Vue {
 
     public games: Game[] = null!;
     public expanded = false;
+    public paneSize = 20;
 
     get game(): Game {
         if (this.games && this.games?.length > 0) {
@@ -92,32 +112,36 @@ export default class MainGame extends Vue {
     }
 
     public boardClasses(): string {
-        return `board overflow-hidden relative shadow-inner flex justify-center items-center
-            ${this.expanded ? "board-small" : "board-tall"}`;
+        return `overflow-hidden relative shadow-inner flex justify-center items-center`;
     }
 
     public playerBarClasses(): string {
-        return `player-bar ${this.expanded ? "player-bar-tall" : "player-bar-small"}`;
+        return "player-bar";
     }
 
     public toggleResize() {
+        if (this.expanded) this.paneSize = 20;
+        else this.paneSize = 50;
         this.expanded = !this.expanded;
     }
 }
 </script>
 
-<style scoped>
+<style>
 .game-bg {
     height: 100vh;
     width: 100vw;
     background-color: #EBF0FC;
+    padding: 10px;
 }
 
 .game-button-wrapper {
     position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    top: 50%;
+    transform: translate(0%, -50%);
+    padding: 8px;
+    background-color: #EBF0FC;
 }
 
 .infection-wrapper {
@@ -128,44 +152,31 @@ export default class MainGame extends Vue {
     background-color: #EBF0FC;
 }
 
-.board {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    left: 15px;
-    -webkit-transition: height 0.1s;
-    -moz-transition: height 0.1s;
-    -ms-transition: height 0.1s;
-    -o-transition: height 0.1s;
-    transition: height 0.1s;
-}
-
-.board-small {
-    height: calc(60vh - 25px) !important;
-}
-
-.board-tall {
-    height: calc(82vh - 25px) !important;
+.playing-cards-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    background-color: #EBF0FC;
 }
 
 .player-bar {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    height: calc(20vh - 10px);
-    -webkit-transition: height 0.1s;
-    -moz-transition: height 0.1s;
-    -ms-transition: height 0.1s;
-    -o-transition: height 0.1s;
-    transition: height 0.1s;
+    padding-top: 10px;
+    background-color: #EBF0FC !important;
 }
 
-.player-bar-small {
-    height: calc(18vh - 10px) !important;
+.splitpanes__splitter:before {
+    border: solid 1px #02225c;
 }
 
-.player-bar-tall {
-    height: calc(40vh - 10px) !important;
+.splitpanes__splitter:after {
+    background-color: #02225c;
+    border: solid 1px #02225c;
+}
+
+.splitpanes--horizontal > .splitpanes__splitter {
+    min-height: 15px;
+    padding: 4px;
+    background-color: #EBF0FC !important;
 }
 </style>

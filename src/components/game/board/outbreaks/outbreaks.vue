@@ -7,7 +7,7 @@
             <p v-if="!show" class="text-lg font-bold select-none">{{ game.outbreaks }}</p>
             <p class="text-lg font-bold select-none">Ausbrüche</p>
         </div>
-        <transition name="slide-fade" mode="out-in">
+        <transition name="slide-x" mode="out-in">
             <div v-if="show" class="flex items-center space-x-3">
                 <p class="text-4xl font-bold text-center select-none">
                     {{ game.outbreaks }}
@@ -55,13 +55,24 @@ export default class Outbreaks extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .outbreak-wrapper {
     position: absolute;
     top: 0;
     left: 0;
     background-color: #EBF0FC;
     padding: 10px;
+}
+
+.slide-x-enter-active {
+    transition: all .3s ease !important;
+}
+.slide-x-leave-active {
+    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0) !important;
+}
+.slide-x-enter, .slide-x-leave-to {
+    transform: translateX(-50px) !important;
+    opacity: 0 !important;
 }
 
 </style>
