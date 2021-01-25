@@ -2,7 +2,7 @@ import { City, Region } from "@/types";
 
 export const cities: City[] = [
     {
-        city: "Riad",
+        city: "riad",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -19,7 +19,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Seoul",
+        city: "seoul",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -36,7 +36,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Hongkong",
+        city: "hongkong",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -53,7 +53,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Mailand",
+        city: "milan",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -70,7 +70,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Madrid",
+        city: "madrid",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -87,7 +87,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Taipei",
+        city: "taipei",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -104,7 +104,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Istanbul",
+        city: "istanbul",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -121,7 +121,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Mexiko Stadt",
+        city: "mexicoCity",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -138,7 +138,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Khartum",
+        city: "khartoum",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -155,7 +155,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Peking",
+        city: "beijing",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -172,7 +172,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Sao Paolo",
+        city: "saoPaulo",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -189,7 +189,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Lima",
+        city: "lima",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -206,7 +206,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Tokio",
+        city: "tokyo",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -223,7 +223,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Santiago",
+        city: "santiago",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -240,7 +240,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Bangkok",
+        city: "bangkok",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -257,7 +257,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Los Angeles",
+        city: "losAngeles",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -274,7 +274,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Buenos Aires",
+        city: "buenosAires",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -291,7 +291,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Kinshasa",
+        city: "kinshasa",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -308,7 +308,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Lagos",
+        city: "lagos",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -325,7 +325,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Paris",
+        city: "paris",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -342,7 +342,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Teheran",
+        city: "tehran",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -359,7 +359,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Miami",
+        city: "miami",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -376,7 +376,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Johannesburg",
+        city: "johannesburg",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -393,7 +393,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Karachi",
+        city: "karachi",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -410,7 +410,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Washington",
+        city: "washington",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -427,7 +427,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "New York",
+        city: "newYork",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -444,7 +444,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "San Francisco",
+        city: "sanFrancisco",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -461,7 +461,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Montreal",
+        city: "montreal",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -478,7 +478,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "St. Petersburg",
+        city: "stPetersburg",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -495,7 +495,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "London",
+        city: "london",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -512,7 +512,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Kalkutta",
+        city: "calcutta",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -529,7 +529,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Madras",
+        city: "madras",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -546,7 +546,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Mumbai",
+        city: "mumbai",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -563,7 +563,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Bagdad",
+        city: "bagdad",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -580,7 +580,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Bogota",
+        city: "bogota",
         region: Region.Yellow,
         researchStation: false,
         diseaseCubes: {
@@ -597,7 +597,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Moskau",
+        city: "moscow",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -614,7 +614,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Shanghai",
+        city: "shanghai",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -631,7 +631,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Sydney",
+        city: "sydney",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -648,7 +648,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Jakarta",
+        city: "jakarta",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -665,7 +665,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Algier",
+        city: "algiers",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -682,7 +682,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Osaka",
+        city: "osaka",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -716,7 +716,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Ho Chi Minh Stadt",
+        city: "hoChiMinhCity",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -733,7 +733,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Manila",
+        city: "manila",
         region: Region.Red,
         researchStation: false,
         diseaseCubes: {
@@ -750,7 +750,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Delhi",
+        city: "delhi",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {
@@ -767,7 +767,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Chicago",
+        city: "chicago",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -784,7 +784,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Essen",
+        city: "essen",
         region: Region.Blue,
         researchStation: false,
         diseaseCubes: {
@@ -801,7 +801,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Kairo",
+        city: "cairo",
         region: Region.Black,
         researchStation: false,
         diseaseCubes: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <c-tooltip has-arrow label="Spiel starten" placement="right">
+        <c-tooltip has-arrow :label="$t('game.startGame')" placement="right">
             <c-icon-button
                 :isRound="true"
                 variant-color="green"
@@ -96,10 +96,8 @@ export default class StartGame extends Vue {
         for (let index = 0; index < players.length; index++) {
             players[index].role = gameRoles.pop();
             const handCards: PlayingCard[] = [];
-            console.log(this.getNumberOfStartingCards());
             for (let i = 0; i < this.getNumberOfStartingCards(); i++)
                 handCards.push(deck.pop()!);
-            console.log(handCards);
             players[index].playingCards = [...handCards];
         }
         const assignedPlayers = this.setStartingPlayer(players);

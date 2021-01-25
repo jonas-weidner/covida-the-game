@@ -3,11 +3,11 @@
          @mouseover="show = true"
          @mouseleave="show = false"
     >
-        <h2 class="font-bold select-none">Ablegestapel</h2>
+        <h2 class="font-bold select-none">{{ $t('other.discardPile') }}</h2>
         <transition name="slide-fade" mode="out-in">
         <div :class="discardClasses">
             <div v-if="sortedDiscardPile.length === 0" class="text-xs font-semibold select-none">
-                Keine Karten im Stapel
+                {{ $t('other.noCardsInDeck') }}
             </div>
             <div class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card, index) in sortedDiscardPile" :key="index">
