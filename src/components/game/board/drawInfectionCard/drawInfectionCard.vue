@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center">
-        <h2 class=" font-bold text-center select-none mb-1">Nachziehstapel</h2>
-        <c-tooltip has-arrow label="Spielerkarte ziehen" placement="left">
+        <h2 class=" font-bold text-center select-none mb-1">{{ $t('other.deck') }}</h2>
+        <c-tooltip has-arrow :label="$t('infections.drawInfectionCard')" placement="left">
             <c-icon-button
                 :isRound="true"
                 variant-color="blue"
@@ -25,8 +25,8 @@ import { Game } from "@/types";
 export default class DrawInfectionCard extends Vue {
     @Prop({ required: true }) game!: Game;
 
-    public async drawInfectionCard(last?: boolean): Promise<void> {
-        await drawInfectionCard(last);
+    public async drawInfectionCard(): Promise<void> {
+        await drawInfectionCard(false);
     }
 }
 </script>

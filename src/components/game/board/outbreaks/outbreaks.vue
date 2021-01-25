@@ -5,7 +5,7 @@
     >
         <div class="flex space-x-1.5">
             <p v-if="!show" class="text-lg font-bold select-none">{{ game.outbreaks }}</p>
-            <p class="text-lg font-bold select-none">Ausbrüche</p>
+            <p class="text-lg font-bold select-none">{{ $t('game.outbreaks') }}</p>
         </div>
         <transition name="slide-x" mode="out-in">
             <div v-if="show" class="flex items-center space-x-3">

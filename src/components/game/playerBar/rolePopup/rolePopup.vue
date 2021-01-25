@@ -1,7 +1,7 @@
 <template>
     <div >
         <p class="font-bold text-xs cursor-pointer underline pr-2 select-none" @click="open">
-           {{ player.role ? player.role.name : "" }}
+           {{ player.role ? $t(`roles.${player.role.name}.name`) : "" }}
         </p>
 
         <c-modal
@@ -9,15 +9,18 @@
             :on-close="close"
         >
             <c-modal-content ref="content">
-                <c-modal-header>{{ player.role ? player.role.name : "" }}</c-modal-header>
+                <c-modal-header>
+                    {{ player.role ? $t(`roles.${player.role.name}.name`) : "" }}
+                </c-modal-header>
                 <c-modal-close-button />
                 <c-modal-body v-if="player.role" class="mb-4">
-                    <p><strong>Aktionen:</strong></p>
-                    <div v-for="(action, index) in player.role.actions" :key="index">
-                        <p>- {{action}}</p>
+                    <p><strong>{{ $t('roleModal.actions') }}:</strong></p>
+                    <div v-for="(_, index) in player.role.actions" :key="index">
+                        <p>- {{ $t(`roles.${player.role.name}.actions.${index+1}`) }}</p>
                     </div>
                     <div v-if="player.role.notes" class="mt-8">
-                        <strong>Notizen:</strong><br> {{ player.role.notes }}
+                        <strong>{{ $t('roleModal.notes') }}:</strong>
+                        <br> {{ $t(`roles.${player.role.name}.notes`) }}
                     </div>
                 </c-modal-body>
             </c-modal-content>

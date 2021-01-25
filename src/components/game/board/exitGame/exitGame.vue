@@ -1,6 +1,6 @@
 <template>
     <div>
-        <c-tooltip has-arrow label="Exit game" placement="right">
+        <c-tooltip has-arrow :label="$t('game.exitGame')" placement="right">
             <c-icon-button
                 :isRound="true"
                 variant-color="red"

@@ -36,7 +36,7 @@
                     </div>
 
                     <div v-if="card.type === 'PANDEMIC'" class="flex items-center justify-end">
-                        <div class="w-3/5 text-sm py-1">Epidemie</div>
+                        <div class="w-3/5 text-sm py-1">{{ $t('playerCards.pandemic') }}</div>
                         <div class="w-1/5"/>
                         <c-icon-button
                             v-if="currentUser"

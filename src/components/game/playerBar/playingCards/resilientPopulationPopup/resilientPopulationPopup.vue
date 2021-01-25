@@ -7,7 +7,7 @@
             :closeOnEsc="false"
         >
             <c-modal-content ref="content">
-                <c-modal-header>Zähe Bevölkerung</c-modal-header>
+                <c-modal-header>{{ $t('playerCards.resilientPopulation') }}</c-modal-header>
                     <c-modal-body class="mb-4">
                         <div class="pt-1 overflow-y-scroll">
                             <div

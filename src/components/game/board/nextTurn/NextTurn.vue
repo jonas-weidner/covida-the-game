@@ -1,6 +1,6 @@
 <template>
     <div>
-        <c-tooltip has-arrow label="Nächster Spieler" placement="right">
+        <c-tooltip has-arrow :label="$t('game.nextPlayer')" placement="right">
             <c-icon-button
                 :isRound="true"
                 variant-color="blue"

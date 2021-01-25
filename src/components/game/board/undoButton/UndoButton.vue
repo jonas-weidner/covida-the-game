@@ -1,6 +1,6 @@
 <template>
     <div>
-        <c-tooltip has-arrow label="Rückgängig machen" placement="right">
+        <c-tooltip has-arrow :label="$t('other.undo')" placement="right">
             <c-icon-button
                 :isRound="true"
                 variant-color="blue"

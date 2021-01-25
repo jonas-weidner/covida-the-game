@@ -3,14 +3,15 @@
          @mouseover="show = true"
          @mouseleave="show = false"
     >
-        <h2 class=" font-bold text-center select-none mb-1">Nachziehstapel</h2>
+        <h2 class=" font-bold text-center select-none mb-1">{{ $t('other.deck') }}</h2>
         <transition name="slide-fade" mode="out-in">
             <h3 v-if="show" class="font-bold select-none my-2 text-sm">
-                Noch <span class="text-blue-500">{{ game.playerDeck.length }}</span> Karten
+                <span class="text-blue-500">{{ game.playerDeck.length }}</span>
+                {{ $t('menu.cards') }} {{ $t('other.left') }}
             </h3>
         </transition>
         <div class="flex justify-center space-x-4">
-            <c-tooltip has-arrow label="Ziehen" placement="right">
+            <c-tooltip has-arrow :label="$t('playerCards.drawPlayerCard')" placement="right">
                 <c-icon-button
                     :isRound="true"
                     variant-color="blue"
@@ -23,7 +24,8 @@
                 />
             </c-tooltip>
 
-            <c-tooltip v-if="isJonas" has-arrow label="Nachziehstapel auffüllen" placement="right">
+            <c-tooltip v-if="isJonas" has-arrow
+                       :label="$t('playerCards.refillPlayerDeck')" placement="right">
                 <c-icon-button
                     :isRound="true"
                     variant-color="blue"

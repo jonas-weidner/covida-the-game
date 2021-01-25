@@ -289,8 +289,8 @@ export const updatePlayerPlayingCards = async (cards: PlayingCard[], player: Pla
 export const drawInfectionCard = async (last?: boolean): Promise<void> => {
     const game = gameData();
     if (game) {
-        const infectionDeck = [...game.infectionDeck];
-        const newCard = last ? infectionDeck.pop() : infectionDeck.shift();
+        const infectionDeck = JSON.parse(JSON.stringify(game.infectionDeck));
+        const newCard = last ? infectionDeck.shift() : infectionDeck.pop();
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         const infectionDiscard = [...game.infectionDiscardPile, newCard];
         await games.doc(game.id).update("infectionDiscardPile", infectionDiscard);
@@ -302,7 +302,7 @@ export const shuffleAndBackOnTop = async (): Promise<void> => {
     const game = gameData();
     if (game) {
         const infectionDiscard = shuffleCards([...game.infectionDiscardPile]);
-        const infectionDeck = [...infectionDiscard, ...game.infectionDeck];
+        const infectionDeck = [...game.infectionDeck, ...infectionDiscard];
         await games.doc(game.id).update("infectionDeck", infectionDeck);
         await games.doc(game.id).update("infectionDiscardPile", []);
         await saveCurrentGameState(game);

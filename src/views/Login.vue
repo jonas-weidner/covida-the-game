@@ -8,7 +8,7 @@
                 <h2 class="text-center text-6xl font-bold">Covida</h2>
                 <p class="text-center">by Jonas Weidner</p>
                 <div class="mt-12">
-                    <c-input placeholder="Email Adresse eingeben" v-model="email"
+                    <c-input :placeholder="$t('login.enterEmail')" v-model="email"
                              variant="outline" />
                 </div>
                 <div class="mt-3">
@@ -16,26 +16,27 @@
                         <c-input
                             pr="5rem"
                             :type="show ? 'text' : 'password'"
-                            placeholder="Passwort eingeben"
+                            :placeholder="$t('login.enterPassword')"
                             v-model="password"
                             variant="outline"
                         />
                         <c-input-right-element width="5rem" class="mr-2">
                             <c-button h="1.75rem" size="sm" @click="show = !show">
-                                {{ show ? 'Hide' : 'Show' }}
+                                {{ show ? $t('login.hide') : $t('login.show') }}
                             </c-button>
                         </c-input-right-element>
                     </c-input-group>
                 </div>
                 <c-button class="mt-5 w-full" variant-color="blue"
-                          size="md" @click="signIn('google')">
-                    Einloggen mit Google
+                          size="md" @click="signIn('email')">
+                    {{ $t('login.login') }}
                 </c-button>
 
                 <c-button class="mt-5 w-full" variant-color="blue"
-                          size="md" @click="signIn('email')">
-                    Einloggen
+                          size="md" @click="signIn('google')">
+                    {{ $t('login.loginWithGoogle') }}
                 </c-button>
+
             </div>
         </div>
     </div>
