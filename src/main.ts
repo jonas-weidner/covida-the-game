@@ -22,7 +22,8 @@ import {
     faCapsules,
     faTimesCircle,
     faCheckDouble,
-    faGift
+    faGift,
+    faEye
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Autocomplete from "@trevoreyre/autocomplete-vue";
@@ -53,7 +54,8 @@ Vue.use(Chakra, {
             faRandom,
             faPaperPlane,
             faCapsules,
-            faGift
+            faGift,
+            faEye
         }
     }
 });

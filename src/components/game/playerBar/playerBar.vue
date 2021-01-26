@@ -9,9 +9,15 @@
                     items-center rounded sticky top-0 z-10"
                 :style="{ backgroundColor: roleColor(player) }"
             >
-                <p class="pl-2 py-2 font-bold text-xs select-none">
-                    {{ player.name }}
-                </p>
+                <div class="flex items-center space-x-0.5">
+                    <div
+                        v-if="player.activeTurn"
+                        class="w-2 h-2 rounded-full bg-white ml-2"
+                    />
+                    <p class="pl-2 py-2 font-bold text-xs select-none">
+                        {{ player.name }}
+                    </p>
+                </div>
                 <role-popup :player="player" />
             </div>
 
@@ -33,7 +39,6 @@ import PlayingCards from "@/components/game/playerBar/playingCards";
 import {
     updateAllPlayers,
     updatePlayerPlayingCards,
-    drawPlayingCard,
     auth
 } from "@/services/firebase";
 
@@ -51,7 +56,7 @@ export default class PlayerBar extends Vue {
 
     @Watch("playersWithDeckUpdates")
     onPlayerWithDeckUpdates(array) {
-        if (array.length === 2) {
+        if (array?.length === 2) {
             this.performPlayerChanges(array);
             this.playersWithDeckUpdates = [];
         }

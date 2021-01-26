@@ -93,3 +93,8 @@ export interface City {
         left: number;
     };
 }
+
+export interface AutoCompleteObject {
+    label: string;
+    value: string;
+}

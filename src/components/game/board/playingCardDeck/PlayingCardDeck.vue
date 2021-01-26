@@ -5,7 +5,7 @@
     >
         <h2 class=" font-bold text-center select-none mb-1">{{ $t('other.deck') }}</h2>
         <transition name="slide-fade" mode="out-in">
-            <h3 v-if="show" class="font-bold select-none my-2 text-sm">
+            <h3 v-if="show" class="font-bold select-none my-1 text-sm">
                 <span class="text-blue-500">{{ game.playerDeck.length }}</span>
                 {{ $t('menu.cards') }} {{ $t('other.left') }}
             </h3>

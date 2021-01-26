@@ -121,6 +121,12 @@
 		"top": "Top",
 		"undo": "Undo"
 	},
+	"overviewModal": {
+		"infectedCities": "Infected cities",
+		"players": "Players",
+		"title": "Game overview",
+		"tooltip": "Open game overview"
+	},
 	"playerCards": {
 		"drawPlayerCard": "Draw player card",
 		"forecast": "Forecast",
@@ -184,5 +190,10 @@
 			},
 			"name": "Scientist"
 		}
+	},
+	"yourTurnModal": {
+		"body": "Your turn consists of three parts.  First you can do up to 4 actions (e.g. drive, flight, build a research station).  Next you draw two cards from the Player Deck and then you draw the amount of infection cards that correspond to the infection rate.",
+		"letsGo": "Let's go",
+		"title": "Your turn!"
 	}
 }

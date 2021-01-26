@@ -121,6 +121,12 @@
 		"top": "Oben",
 		"undo": "Rückgängig machen"
 	},
+	"overviewModal": {
+		"infectedCities": "Infizierte Städte",
+		"players": "Spieler",
+		"title": "Spielübersicht",
+		"tooltip": "Spielübersicht öffnen"
+	},
 	"playerCards": {
 		"drawPlayerCard": "Spielerkarte ziehen",
 		"forecast": "Prognose",
@@ -184,5 +190,10 @@
 			},
 			"name": "Wissenschaftler"
 		}
+	},
+	"yourTurnModal": {
+		"body": "Dein Zug besteht aus drei Teilen.  Zuerst kannst du bis zu 4 Aktionen ausführen (z. B. fahren, fliegen, eine Forschungsstation bauen).  Als nächstes ziehst du zwei Karten aus dem Spielerstapel und dann die Anzahl der Infektionskarten, die der Infektionsrate entsprechen.",
+		"letsGo": "Auf geht's!",
+		"title": "Du bist dran!"
 	}
 }

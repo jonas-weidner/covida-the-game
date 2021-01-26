@@ -12,6 +12,7 @@
                     <exit-game v-if="game && game.started" />
                     <undo-button v-if="game && game.started" :game="game" />
                     <next-turn v-if="game && game.started" :game="game" />
+                    <overview-modal v-if="game && game.started" :game="game" />
                 </div>
 
                 <div class="playing-cards-wrapper rounded-tr-2xl shadow-2xl">
@@ -44,6 +45,7 @@
 
         </splitpanes>
         <resize-button @resize="toggleResize" :expanded="expanded" />
+        <your-turn-modal ref="yourTurnModal" />
     </div>
 </template>
 
@@ -64,12 +66,16 @@ import ResizeButton from "@/components/game/resizeButton";
 import UndoButton from "@/components/game/board/undoButton";
 import PlayingCardDeck from "@/components/game/board/playingCardDeck";
 import { Vue, Component, Watch } from "vue-property-decorator";
-import { database } from "@/services/firebase";
+import { auth, database } from "@/services/firebase";
 import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
+import YourTurnModal from "@/components/game/yourTurnModal/YourTurnModal.vue";
+import OverviewModal from "@/components/game/board/overviewModal/OverviewModal.vue";
 
 @Component({
     components: {
+        OverviewModal,
+        YourTurnModal,
         ResizeButton,
         Medicines,
         NextTurn,
@@ -99,6 +105,18 @@ export default class MainGame extends Vue {
                 .where("gameCode", "==", id)
                 .limit(1)
         );
+    }
+
+    @Watch("game", { deep: true })
+    onGameUpdate(game: Game, oldGame: Game) {
+        const playerId = auth.currentUser?.uid;
+        if (game && oldGame && playerId) {
+            const oldGamePlayer = oldGame.players.find((player) => player.id === playerId);
+            const newGamePlayer = game.players.find((player) => player.id === playerId);
+
+            if (!oldGamePlayer?.activeTurn && newGamePlayer?.activeTurn)
+                (this.$refs.yourTurnModal as YourTurnModal).open();
+        }
     }
 
     public games: Game[] = null!;

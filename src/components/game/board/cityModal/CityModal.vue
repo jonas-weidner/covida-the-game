@@ -44,6 +44,7 @@
                             <div class="w-3/5 flex items-center justify-end space-x-2">
                                 <autocomplete
                                     :search="search"
+                                    :getResultValue="getResultValue"
                                     @submit="citySelected($event, player)"
                                     placeholder="Search for a city"
                                     aria-label="Search for a city"
@@ -75,7 +76,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { changeDiseaseLevel, updateCities } from "@/services/firebase";
-import { City, Game, Player } from "@/types";
+import { AutoCompleteObject, City, Game, Player } from "@/types";
 import { cities } from "@/assets/cities";
 
 @Component
@@ -109,23 +110,32 @@ export default class CityModal extends Vue {
             await changeDiseaseLevel(city, color, decrease);
     }
 
-    public search(input: string): string[] {
+    public search(input: string): AutoCompleteObject[] {
         if (input.length < 1) return [];
 
-        return cities.map((city) => city.city).filter(name => {
-            return name.toLowerCase().startsWith(input.toLowerCase());
+        return cities.map((city) => {
+            return {
+                label: this.$t(`cities.${city.city}`).toString(),
+                value: city.city
+            };
+        }).filter(obj => {
+            return obj.label.toLowerCase().startsWith(input.toLowerCase());
         });
     }
 
-    public citySelected(result: any, player: Player) {
+    public getResultValue(result: AutoCompleteObject) {
+        return result.label;
+    }
+
+    public citySelected(result: AutoCompleteObject, player: Player) {
         const existingIndex = this.playersToLocation
             .findIndex((element) => element.playerId === player.id);
         if (existingIndex === -1)
             this.playersToLocation.push({
                 playerId: player.id,
-                city: result
+                city: result.value
             });
-        else this.playersToLocation[existingIndex].city = result;
+        else this.playersToLocation[existingIndex].city = result.value;
     }
 
     public async sendPlayerToCity(player: Player): Promise<void> {

@@ -11,7 +11,7 @@ export const roles: Role[] = [
     },
     {
         name: "dispatcher",
-        color: "#E37EC9",
+        color: "#e345b6",
         actions: [
             "1",
             "2"
@@ -20,7 +20,7 @@ export const roles: Role[] = [
     },
     {
         name: "medic",
-        color: "#E38128",
+        color: "#ff7b00",
         actions: [
             "1",
             "2"
@@ -29,7 +29,7 @@ export const roles: Role[] = [
     },
     {
         name: "operationsExpert",
-        color: "#1BCF68",
+        color: "#02df78",
         actions: [
             "1",
             "2"
@@ -38,21 +38,21 @@ export const roles: Role[] = [
     },
     {
         name: "quarantineSpecialist",
-        color: "#156B28",
+        color: "#217c19",
         actions: [
             "1"
         ]
     },
     {
         name: "researcher",
-        color: "#A75D06",
+        color: "#5f2d0a",
         actions: [
             "1"
         ]
     },
     {
         name: "scientist",
-        color: "#8E2CEB",
+        color: "#5b23c4",
         actions: [
             "1"
         ]
