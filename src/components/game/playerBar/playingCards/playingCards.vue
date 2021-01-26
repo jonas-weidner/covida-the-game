@@ -101,9 +101,9 @@ export default class PlayingCards extends Vue {
     }
 
     public async playHandCard(card: PlayingCard, remove?: boolean): Promise<void> {
-        if (card.type === PlayingCardType.Action && card.action?.name === "Zähe Bevölkerung")
+        if (card.type === PlayingCardType.Action && card.action?.name === "resilientPopulation")
             (this.$refs.resilient as any).open();
-        else if (card.type === PlayingCardType.Action && card.action?.name === "Prognose")
+        else if (card.type === PlayingCardType.Action && card.action?.name === "forecast")
             (this.$refs.forecast as any).open();
 
         return await playHandCard(card, remove);
