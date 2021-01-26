@@ -108,7 +108,6 @@ export default class MainGame extends Vue {
     get game(): Game {
         if (this.games && this.games?.length > 0) {
             this.$store.commit("setGame", this.games[0]);
-            console.log(this.games[0]);
             return this.games[0];
         }
         return null!;

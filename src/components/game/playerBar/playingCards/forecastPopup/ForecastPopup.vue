@@ -21,7 +21,8 @@
                             <div class="draggable-item cursor-pointer">
                                 <div class="flex items-center relative py-1">
                                     <div :class="regionClass(card.region)" />
-                                    <div class="pl-8 text-sm text-left">{{ card.city }}</div>
+                                    <div class="pl-8 text-sm text-left">
+                                        {{ $t(`cities.${card.city}`) }}</div>
                                 </div>
                             </div>
                         </Draggable>
