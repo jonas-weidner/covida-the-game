@@ -2,289 +2,289 @@ import { CityCard, Region } from "@/types";
 
 export const infectionCards: CityCard[] = [
     {
-        city: "Riad",
+        city: "riad",
         country: "Saudi-Arabien",
         region: Region.Black,
         population: 6506700
     },
     {
-        city: "Seoul",
+        city: "seoul",
         country: "Südkorea",
         region: Region.Red,
         population: 25600000
     },
     {
-        city: "Hongkong",
+        city: "hongkong",
         country: "China",
         region: Region.Red,
         population: 7409800
     },
     {
-        city: "Mailand",
+        city: "milan",
         country: "Italien",
         region: Region.Blue,
         population: 5270000
     },
     {
-        city: "Madrid",
+        city: "madrid",
         country: "Spanien",
         region: Region.Blue,
         population: 6529700
     },
     {
-        city: "Taipei",
+        city: "taipei",
         country: "Taiwan",
         region: Region.Red,
         population: 7047559
     },
     {
-        city: "Istanbul",
+        city: "istanbul",
         country: "Türkei",
         region: Region.Black,
         population: 14741000
     },
     {
-        city: "Mexiko Stadt",
+        city: "mexicoCity",
         country: "Mexiko",
         region: Region.Yellow,
         population: 21157000
     },
     {
-        city: "Khartum",
+        city: "khartoum",
         country: "Sudan",
         region: Region.Yellow,
         population: 5274321
     },
     {
-        city: "Peking",
+        city: "beijing",
         country: "China",
         region: Region.Red,
         population: 24000000
     },
     {
-        city: "Sao Paolo",
+        city: "saoPaulo",
         country: "Brasilien",
         region: Region.Yellow,
         population: 23455256
     },
     {
-        city: "Lima",
+        city: "lima",
         country: "Peru",
         region: Region.Yellow,
         population: 12140000
     },
     {
-        city: "Tokio",
+        city: "tokyo",
         country: "Japan",
         region: Region.Red,
         population: 38305000
     },
     {
-        city: "Santiago",
+        city: "santiago",
         country: "Chile",
         region: Region.Yellow,
         population: 7036792
     },
     {
-        city: "Bangkok",
+        city: "bangkok",
         country: "Thailand",
         region: Region.Red,
         population: 14626225
     },
     {
-        city: "Los Angeles",
+        city: "losAngeles",
         country: "USA",
         region: Region.Yellow,
         population: 13131431
     },
     {
-        city: "Buenos Aires",
+        city: "buenosAires",
         country: "Argentinien",
         region: Region.Yellow,
         population: 13591863
     },
     {
-        city: "Kinshasa",
+        city: "kinshasa",
         country: "Kongo",
         region: Region.Yellow,
         population: 11855000
     },
     {
-        city: "Lagos",
+        city: "lagos",
         country: "Nigeria",
         region: Region.Yellow,
         population: 21000000
     },
     {
-        city: "Paris",
+        city: "paris",
         country: "Frankreich",
         region: Region.Blue,
         population: 12405426
     },
     {
-        city: "Teheran",
+        city: "tehran",
         country: "Iran",
         region: Region.Black,
         population: 8846782
     },
     {
-        city: "Miami",
+        city: "miami",
         country: "USA",
         region: Region.Yellow,
         population: 5564635
     },
     {
-        city: "Johannesburg",
+        city: "johannesburg",
         country: "Südafrika",
         region: Region.Yellow,
         population: 9616000
     },
     {
-        city: "Karachi",
+        city: "karachi",
         country: "Pakistan",
         region: Region.Black,
         population: 23000000
     },
     {
-        city: "Washington",
+        city: "washington",
         country: "USA",
         region: Region.Blue,
         population: 4586770
     },
     {
-        city: "New York",
+        city: "newYork",
         country: "USA",
         region: Region.Blue,
         population: 23723696
     },
     {
-        city: "San Francisco",
+        city: "sanFrancisco",
         country: "USA",
         region: Region.Blue,
         population: 4727357
     },
     {
-        city: "Montreal",
+        city: "montreal",
         country: "Kanada",
         region: Region.Blue,
         population: 3519595
     },
     {
-        city: "St. Petersburg",
+        city: "stPetersburg",
         country: "Russland",
         region: Region.Blue,
         population: 5281579
     },
     {
-        city: "London",
+        city: "london",
         country: "Großbritannien",
         region: Region.Blue,
         population: 13709000
     },
     {
-        city: "Kalkutta",
+        city: "calcutta",
         country: "Indien",
         region: Region.Black,
         population: 14617882
     },
     {
-        city: "Madras",
+        city: "madras",
         country: "Indien",
         region: Region.Black,
         population: 10265000
     },
     {
-        city: "Mumbai",
+        city: "mumbai",
         country: "Indien",
         region: Region.Black,
         population: 18414288
     },
     {
-        city: "Bagdad",
+        city: "bagdad",
         country: "Irak",
         region: Region.Black,
         population: 8765000
     },
     {
-        city: "Bogota",
+        city: "bogota",
         country: "Kolumbien",
         region: Region.Yellow,
         population: 10200000
     },
     {
-        city: "Moskau",
+        city: "moscow",
         country: "Russland",
         region: Region.Blue,
         population: 16170000
     },
     {
-        city: "Shanghai",
+        city: "shanghai",
         country: "China",
         region: Region.Red,
         population: 35965403
     },
     {
-        city: "Sydney",
+        city: "sydney",
         country: "Australien",
         region: Region.Red,
         population: 5029711
     },
     {
-        city: "Jakarta",
+        city: "jakarta",
         country: "Indonesien",
         region: Region.Red,
         population: 30214303
     },
     {
-        city: "Algier",
+        city: "algiers",
         country: "Algerien",
         region: Region.Black,
         population: 7796923
     },
     {
-        city: "Osaka",
+        city: "osaka",
         country: "Japan",
         region: Region.Red,
         population: 19341976
     },
     {
-        city: "Atlanta",
+        city: "atlanta",
         country: "USA",
         region: Region.Blue,
         population: 4975300
     },
     {
-        city: "Ho Chi Minh Stadt",
+        city: "hoChiMinhCity",
         country: "Vietnam",
         region: Region.Red,
         population: 13000000
     },
     {
-        city: "Manila",
+        city: "manila",
         country: "Philippinen",
         region: Region.Red,
         population: 12877253
     },
     {
-        city: "Delhi",
+        city: "delhi",
         country: "Indien",
         region: Region.Black,
         population: 26454000
     },
     {
-        city: "Chicago",
+        city: "chicago",
         country: "USA",
         region: Region.Blue,
         population: 9512999
     },
     {
-        city: "Essen",
+        city: "essen",
         country: "Deutschland",
         region: Region.Blue,
         population: 583084
     },
     {
-        city: "Kairo",
+        city: "cairo",
         country: "Ägypten",
         region: Region.Black,
         population: 20439541

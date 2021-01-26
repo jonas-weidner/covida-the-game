@@ -6,7 +6,8 @@
                 <div class="draggable-item cursor-pointer">
                     <div v-if="card.type === 'CITY'" class="flex items-center justify-end relative">
                         <div :class="regionClass(card.city.region)" />
-                        <div class="w-3/5 text-sm py-1">{{ card.city.city }}</div>
+                        <div class="w-3/5 text-sm py-1">
+                            {{ $t(`cities.${card.city.city}`) }}</div>
                         <div class="w-1/5 text-xs font-light text-gray-400">
                             {{ population(card.city.population) }}
                         </div>

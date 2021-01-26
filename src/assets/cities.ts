@@ -699,7 +699,7 @@ export const cities: City[] = [
         }
     },
     {
-        city: "Atlanta",
+        city: "atlanta",
         region: Region.Blue,
         researchStation: true,
         diseaseCubes: {

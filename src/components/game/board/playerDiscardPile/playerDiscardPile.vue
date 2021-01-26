@@ -14,7 +14,7 @@
                 <div v-if="card.type === 'CITY'" class="flex items-center justify-between relative">
                     <div :class="regionClass(card.city.region)" />
                     <div class="w-4/5 pl-8 text-sm text-left py-1 select-none">
-                        {{ card.city.city }}
+                        {{ $t(`cities.${card.city.city}`) }}
                     </div>
                     <c-icon-button
                         v-if="isCrisisManager"

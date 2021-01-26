@@ -59,7 +59,7 @@ export default class StartGame extends Vue {
 
     private initializeCities(players: Player[]): City[] {
         const newCities = JSON.parse(JSON.stringify([...cities]));
-        const atlantaIndex = newCities.findIndex((city) => city.city === "Atlanta");
+        const atlantaIndex = newCities.findIndex((city) => city.city === "atlanta");
         newCities[atlantaIndex].researchStation = true;
         newCities[atlantaIndex].playersInCity = players;
         return newCities;

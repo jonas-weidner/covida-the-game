@@ -18,7 +18,7 @@
                 >
                     <div class="flex items-center relative">
                         <div :class="regionClass(card.region)" />
-                        <div class="pl-8 text-sm text-left">{{ card.city }}</div>
+                        <div class="pl-8 text-sm text-left">{{ $t(`cities.${card.city}`) }}</div>
                     </div>
 
                 </div>

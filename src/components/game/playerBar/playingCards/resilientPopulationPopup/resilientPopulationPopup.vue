@@ -16,7 +16,8 @@
                             >
                                 <div class="flex items-center justify-between relative">
                                     <div :class="regionClass(card.region)" />
-                                    <div class="w-4/5 pl-8 text-sm text-left py-1">{{ card.city }}</div>
+                                    <div class="w-4/5 pl-8 text-sm text-left py-1">
+                                        {{ $t(`cities.${card.city}`) }}</div>
                                     <c-icon-button
                                         variant-color="blue"
                                         aria-label="Karte entfernen"
