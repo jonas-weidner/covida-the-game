@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-between items-center cursor-pointer" @click="open">
-        <div class="font-bold pt-0.5">{{ city.city }}</div>
+        <div class="font-bold pt-0.5">{{ $t(`cities.${city.city}`) }}</div>
         <font-awesome-icon icon="external-link-alt" />
 
         <c-modal
@@ -9,7 +9,7 @@
             size="xl"
         >
             <c-modal-content ref="content">
-                <c-modal-header>{{ city.city }}</c-modal-header>
+                <c-modal-header>{{ $t(`cities.${city.city}`) }}</c-modal-header>
                 <c-modal-close-button />
                 <c-modal-body class="mb-4">
                     <div class="flex items-center justify-center space-x-12 leading-none">
@@ -29,7 +29,9 @@
                         </div>
                     </div>
                     <div v-if="city.playersInCity.length > 0">
-                        <div class="font-bold text-xl mt-8 mb-3">Spieler in Stadt</div>
+                        <div class="font-bold text-xl mt-8 mb-3">
+                            {{ $t('cityModal.playersInCity') }}
+                        </div>
                         <div v-for="player in city.playersInCity" :key="player.id"
                             class="flex items-center justify-between space-x-5 mb-3"
                         >
@@ -46,8 +48,8 @@
                                     placeholder="Search for a city"
                                     aria-label="Search for a city"
                                 />
-                                <c-tooltip has-arrow label="Spieler in Stadt schicken"
-                                           placement="left">
+                                <c-tooltip has-arrow placement="left"
+                                           :label="$t('cityModal.sendPlayerToCity')">
                                     <c-icon-button
                                         :isRound="true"
                                         variant-color="blue"

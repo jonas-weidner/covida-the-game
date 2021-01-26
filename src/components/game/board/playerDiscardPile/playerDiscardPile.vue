@@ -3,18 +3,18 @@
          @mouseover="show = true"
          @mouseleave="show = false"
     >
-        <h2 class="font-bold select-none">Ablegestapel</h2>
+        <h2 class="font-bold select-none">{{ $t('other.discardPile') }}</h2>
         <transition name="slide-fade" mode="out-in">
         <div :class="discardClasses">
             <div v-if="sortedDiscardPile.length === 0" class="text-xs font-semibold select-none">
-                Keine Karten im Stapel
+                {{ $t('other.noCardsInDeck') }}
             </div>
             <div class="rounded bg-gray-200 font-semibold mb-1"
                 v-for="(card, index) in sortedDiscardPile" :key="index">
                 <div v-if="card.type === 'CITY'" class="flex items-center justify-between relative">
                     <div :class="regionClass(card.city.region)" />
                     <div class="w-4/5 pl-8 text-sm text-left py-1 select-none">
-                        {{ card.city.city }}
+                        {{ $t(`cities.${card.city.city}`) }}
                     </div>
                     <c-icon-button
                         v-if="isCrisisManager"

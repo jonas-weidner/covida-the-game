@@ -27,6 +27,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import Autocomplete from "@trevoreyre/autocomplete-vue";
 import "@trevoreyre/autocomplete-vue/dist/style.css";
+import i18n from "./i18n";
 
 Vue.use(Autocomplete);
 Vue.use(panZoom);
@@ -69,6 +70,7 @@ auth.onAuthStateChanged(() => {
         app = new Vue({
             router,
             store,
+            i18n,
             render: (h) => h(CThemeProvider, [h(App)])
         }).$mount("#app");
 });

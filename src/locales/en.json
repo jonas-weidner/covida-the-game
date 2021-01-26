@@ -1,0 +1,188 @@
+{
+	"actionCards": {
+		"airlift": {
+			"description": "Move any 1 pawn to any city.  Get permission before moving another player's pawn.",
+			"name": "Airlift"
+		},
+		"forecast": {
+			"description": "Draw the next 6 cards from the infection deck.  Look at the cards and put them back in an order of your choice.",
+			"name": "Forecast"
+		},
+		"governmentGrant": {
+			"description": "Place a research station at any city without the need for a city card.",
+			"name": "Government grant"
+		},
+		"oneQuietNight": {
+			"description": "Skip the next infect cities step (do not flip over any infection cards)",
+			"name": "One quiet night"
+		},
+		"resilientPopulation": {
+			"description": "Remove one card from the infection discard pile from the game.",
+			"name": "Resilient population"
+		}
+	},
+	"cities": {
+		"algiers": "Algiers",
+		"atlanta": "Atlanta",
+		"bagdad": "Bagdad",
+		"bangkok": "Bangkok",
+		"beijing": "Beijing",
+		"bogota": "Bogota",
+		"buenosAires": "Buenos Aires",
+		"cairo": "Cairo",
+		"calcutta": "Calcutta",
+		"chicago": "Chicago",
+		"delhi": "Delhi",
+		"essen": "Essen",
+		"hoChiMinhCity": "Ho Chi Minh City",
+		"hongkong": "Hongkong",
+		"istanbul": "Istanbul",
+		"jakarta": "Jakarta",
+		"johannesburg": "Johannesburg",
+		"karachi": "Karachi",
+		"khartoum": "Khartoum",
+		"kinshasa": "Kinshasa",
+		"lagos": "Lagos",
+		"lima": "Lima",
+		"london": "London",
+		"losAngeles": "Los Angeles",
+		"madras": "Madras",
+		"madrid": "Madrid",
+		"manila": "Manila",
+		"mexicoCity": "Mexico City",
+		"miami": "Miami",
+		"milan": "Milan",
+		"montreal": "Montreal",
+		"moscow": "Moscow",
+		"mumbai": "Mumbai",
+		"newYork": "New York",
+		"osaka": "Osaka",
+		"paris": "Paris",
+		"riad": "Riad",
+		"sanFrancisco": "San Francisco",
+		"santiago": "Santiago",
+		"saoPaulo": "São Paulo",
+		"seoul": "Seoul",
+		"shanghai": "Shanghai",
+		"stPetersburg": "St.  Petersburg",
+		"sydney": "Sydney",
+		"taipei": "Taipei",
+		"tehran": "Tehran",
+		"tokyo": "Tokyo",
+		"washington": "Washington"
+	},
+	"cityModal": {
+		"playersInCity": "Players in city",
+		"sendPlayerToCity": "Send player to selected city"
+	},
+	"game": {
+		"exitGame": "Exit game",
+		"nextPlayer": "Next player",
+		"outbreaks": "Outbreaks",
+		"startGame": "Start game"
+	},
+	"infections": {
+		"drawBottomCard": "Draw the bottom card",
+		"drawInfectionCard": "Draw infection card",
+		"infectionCards": "Infection cards",
+		"infectionRate": "Infection rate",
+		"reshuffleAndBack": "Reshuffle cards and place back on top"
+	},
+	"login": {
+		"enterEmail": "Enter email address",
+		"enterPassword": "Enter password",
+		"hide": "Hide",
+		"login": "Login",
+		"loginWithGoogle": "Login with Google",
+		"show": "Show"
+	},
+	"menu": {
+		"cards": "cards",
+		"createGame": "Create game",
+		"createNewGame": "Create new game",
+		"difficulty": "Difficulty",
+		"gameCode": "Game code",
+		"heroic": "Heroic",
+		"introductory": "Introductory",
+		"joinAGame": "Join a game",
+		"joinGame": "Join game",
+		"logout": "Log out",
+		"numberOfPlayers": "Number of players",
+		"players": "players",
+		"standard": "Standard",
+		"yourName": "Your name"
+	},
+	"other": {
+		"confirm": "Confirm",
+		"deck": "Deck",
+		"discardPile": "Discard pile",
+		"left": "left",
+		"noCardsInDeck": "No cards in deck",
+		"top": "Top",
+		"undo": "Undo"
+	},
+	"playerCards": {
+		"drawPlayerCard": "Draw player card",
+		"forecast": "Forecast",
+		"forecastDescription": "Draw the next 6 cards from the infection deck. Look at the cards and put them back in an order of your choice.",
+		"pandemic": "Pandemic",
+		"playerCards": "Player cards",
+		"refillPlayerDeck": "Refill the player deck",
+		"resilientPopulation": "Resilient population"
+	},
+	"roleModal": {
+		"actions": "Actions",
+		"notes": "Notes"
+	},
+	"roles": {
+		"contingencyPlanner": {
+			"actions": {
+				"1": "The Contingency Planner may, as an action, take an Event card from anywhere in the Player Discard Pile and place it on his Role card. Only 1 Event card can be on his role card at a time. It does not count against his hand limit."
+			},
+			"name": "Contingency Planner",
+			"notes": "When the Contingency Planner plays the Event card on his role card, remove this Event card from the game (instead of discarding it)."
+		},
+		"dispatcher": {
+			"actions": {
+				"1": "The Dispatcher may move any pawn,  if its owner agrees,  to any city containing another pawn,  or",
+				"2": "The Dispatcher may move another player’s pawn,  if its owner agrees,  as if it were his own."
+			},
+			"name": "Dispatcher",
+			"notes": "When moving a player’s pawn as if it were your own, discard cards for Direct and Charter Flights from your hand. A card discarded for a Charter Flight must match the city the pawn is moving from.\nThe Dispatcher can only move other players’ pawns; he may not direct them to do other actions, such as Treat Disease."
+		},
+		"medic": {
+			"actions": {
+				"1": "The Medic removes all cubes, not 1, of the same color when doing the Treat Disease action.",
+				"2": "If a disease has been cured, he automatically removes all cubes of that color from a city, simply by entering it or being there. This does not take an action."
+			},
+			"name": "Medic",
+			"notes": "The Medic’s automatic removal of cubes can occur on other players’ turns, if he is moved by the Dispatcher or the Airlift Event.\nThe Medic also prevents placing disease cubes (and outbreaks) of cured diseases in his location."
+		},
+		"operationsExpert": {
+			"actions": {
+				"1": "The Operations Expert may build a research station in his current city without discarding (or using) a City card,  or",
+				"2": "The Operations Expert may once per turn, move from a research station to any city by discarding any City card."
+			},
+			"name": "Operations Expert",
+			"notes": "The Dispatcher may not use the Operations Expert’s special move ability when moving the Operation Expert’s pawn."
+		},
+		"quarantineSpecialist": {
+			"actions": {
+				"1": "The Quarantine Specialist prevents both outbreaks and the placement of disease cubes in the city she is in and all cities connected to that city. She does not affect cubes placed during setup."
+			},
+			"name": "Quarantine Specialist"
+		},
+		"researcher": {
+			"actions": {
+				"1": "When doing the Share Knowledge action, the Researcher may give any City card from her hand to another player in the same city as her, without this card having to match her city. The transfer must be from her hand to the other player’s hand, but it can occur on either player’s turn."
+			},
+			"name": "Researcher"
+		},
+		"scientist": {
+			"actions": {
+				"1": "The Scientist needs only 4 (not 5) City cards of the same disease color to Discover a Cure for that disease."
+			},
+			"name": "Scientist"
+		}
+	}
+}

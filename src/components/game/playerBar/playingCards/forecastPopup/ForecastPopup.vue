@@ -7,14 +7,12 @@
             :closeOnEsc="false"
         >
             <c-modal-content ref="content">
-                <c-modal-header>Prognose</c-modal-header>
+                <c-modal-header>{{ $t('playerCards.forecast') }}</c-modal-header>
                 <c-modal-close-button />
                 <c-modal-body class="mb-4">
-                    <div class="text-sm mb-3">Ziehe die nächsten 6 Karten des Infektionsstapels.
-                        Schaue dir die
-                        Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel.</div>
+                    <div class="text-sm mb-3">{{ $t('playerCards.forecastDescription') }}</div>
                     <div class="flex items-center space-x-2">
-                        <div class="font-bold text-xs">Oben</div>
+                        <div class="font-bold text-xs">{{ $t('other.top') }}</div>
                         <c-icon name="arrow-down" size="12px" />
                     </div>
                     <Container @drop="onDrop" group-name="playingCards" :get-child-payload="getChildPayload">
@@ -23,7 +21,8 @@
                             <div class="draggable-item cursor-pointer">
                                 <div class="flex items-center relative py-1">
                                     <div :class="regionClass(card.region)" />
-                                    <div class="pl-8 text-sm text-left">{{ card.city }}</div>
+                                    <div class="pl-8 text-sm text-left">
+                                        {{ $t(`cities.${card.city}`) }}</div>
                                 </div>
                             </div>
                         </Draggable>
@@ -31,7 +30,7 @@
                 </c-modal-body>
                 <c-modal-footer class="flex justify-center">
                     <c-button variant-color="blue" mr="3" @click="close">
-                        Bestätigen
+                        {{ $t('other.confirm') }}
                     </c-button>
                 </c-modal-footer>
             </c-modal-content>

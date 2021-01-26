@@ -1,0 +1,188 @@
+{
+	"actionCards": {
+		"airlift": {
+			"description": "Bewege eine beliebige Spielfigur in eine bleibige andere Stadt.",
+			"name": "Freiflug"
+		},
+		"forecast": {
+			"description": "Ziehe die nächsten 6 Karten des Infektionsstapels.  Schaue dir die Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel.",
+			"name": "Prognose"
+		},
+		"governmentGrant": {
+			"description": "Setze eine Forschungsstation in eine beliebige Stadt (keine Stadtkarte nötig).",
+			"name": "Statliche Subvention"
+		},
+		"oneQuietNight": {
+			"description": "Die nächste Infektionsphase (egal welcher Spieler dann am Zug ist) wird komplett übersprungen.",
+			"name": "Eine ruhige Nacht"
+		},
+		"resilientPopulation": {
+			"description": "Entferne eine Karte vom Infektionsablegestapel aus dem Spiel.",
+			"name": "Zähe Bevölkerung"
+		}
+	},
+	"cities": {
+		"algiers": "Algier",
+		"atlanta": "Atlanta",
+		"bagdad": "Bagdad",
+		"bangkok": "Bangkok",
+		"beijing": "Peking",
+		"bogota": "Bogota",
+		"buenosAires": "Buenos Aires",
+		"cairo": "Kairo",
+		"calcutta": "Kalkutta",
+		"chicago": "Chicago",
+		"delhi": "Delhi",
+		"essen": "Essen",
+		"hoChiMinhCity": "Ho Chi Minh Stadt",
+		"hongkong": "Hongkong",
+		"istanbul": "Istanbul",
+		"jakarta": "Jakarta",
+		"johannesburg": "Johannesburg",
+		"karachi": "Karachi",
+		"khartoum": "Khartum",
+		"kinshasa": "Kinshasa",
+		"lagos": "Lagos",
+		"lima": "Lima",
+		"london": "London",
+		"losAngeles": "Los Angeles",
+		"madras": "Madras",
+		"madrid": "Madrid",
+		"manila": "Manila",
+		"mexicoCity": "Mexiko Stadt",
+		"miami": "Miami",
+		"milan": "Mailand",
+		"montreal": "Montreal",
+		"moscow": "Moskau",
+		"mumbai": "Mumbai",
+		"newYork": "New York",
+		"osaka": "Osaka",
+		"paris": "Paris",
+		"riad": "Riad",
+		"sanFrancisco": "San Francisco",
+		"santiago": "Santiago",
+		"saoPaulo": "São Paulo",
+		"seoul": "Seoul",
+		"shanghai": "Shanghai",
+		"stPetersburg": "St. Petersburg",
+		"sydney": "Sydney",
+		"taipei": "Taipei",
+		"tehran": "Teheran",
+		"tokyo": "Tokio",
+		"washington": "Washington"
+	},
+	"cityModal": {
+		"playersInCity": "Spieler in Stadt",
+		"sendPlayerToCity": "Spieler in ausgewählte Stadt schicken"
+	},
+	"game": {
+		"exitGame": "Spiel verlassen",
+		"nextPlayer": "Nächster Spieler",
+		"outbreaks": "Ausbrüche",
+		"startGame": "Spiel starten"
+	},
+	"infections": {
+		"drawBottomCard": "Unterste Karte ziehen",
+		"drawInfectionCard": "Infektionskarte ziehen",
+		"infectionCards": "Infektionskarten",
+		"infectionRate": "Infektionsgrad",
+		"reshuffleAndBack": "Ablegestapel mischen und zurück legen"
+	},
+	"login": {
+		"enterEmail": "Emailadresse eingeben",
+		"enterPassword": "Password eingeben",
+		"hide": "Verbergen",
+		"login": "Einloggen",
+		"loginWithGoogle": "Einloggen mit Google",
+		"show": "Zeigen"
+	},
+	"menu": {
+		"cards": "Karten",
+		"createGame": "Spiel erstellen",
+		"createNewGame": "Neues Spiel erstellen",
+		"difficulty": "Schwierigkeit",
+		"gameCode": "Spiele-Code",
+		"heroic": "Heldenstufe",
+		"introductory": "Einstiegerstufe",
+		"joinAGame": "Einem Spiel beitreten",
+		"joinGame": "Spiel beitreten",
+		"logout": "Ausloggen",
+		"numberOfPlayers": "Mitspieler",
+		"players": "Spieler",
+		"standard": "Standardstufe",
+		"yourName": "Dein Name"
+	},
+	"other": {
+		"confirm": "Bestätigen",
+		"deck": "Nachziehstapel",
+		"discardPile": "Ablagestapel",
+		"left": "übrig",
+		"noCardsInDeck": "Keine Karten im Stapel",
+		"top": "Oben",
+		"undo": "Rückgängig machen"
+	},
+	"playerCards": {
+		"drawPlayerCard": "Spielerkarte ziehen",
+		"forecast": "Prognose",
+		"forecastDescription": "Ziehe die nächsten 6 Karten des Infektionsstapels. Schaue dir die Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel.",
+		"pandemic": "Epidemie",
+		"playerCards": "Spielerkarten",
+		"refillPlayerDeck": "Nachziehstapel auffüllen",
+		"resilientPopulation": "Zähe Bevölkerung"
+	},
+	"roleModal": {
+		"actions": "Aktionen",
+		"notes": "Notizen"
+	},
+	"roles": {
+		"contingencyPlanner": {
+			"actions": {
+				"1": "Der Krisenmanager darf mit 1 Aktion 1 Ereigniskarte aus dem Spielerkarten-Ablagestapel heraussuchen und offen auf seine Rollenkarte legen. Er darf aber stets nur eine Karte auf einmal dort liegen haben. Die Ereigniskarte zählt nicht zu seinem Handkartenlimit."
+			},
+			"name": "Krisenmanager",
+			"notes": "Der Krisenmanager darf diese Ereigniskarte ganz normal spielen. Danach kommt sie aus dem Spiel (statt auf den Spielerkarten-Ablagestapel)."
+		},
+		"dispatcher": {
+			"actions": {
+				"1": "Der Logistiker darf mit 1 Aktion eine Spielfigur in eine beliebige Stadt bewegen,  in der bereits die Spielfigur eines anderen Spielers steht",
+				"2": "Der Logistiker darf mit 1 Aktion eine beliebige Spielfigur so bewegen, als wäre es seine eigene."
+			},
+			"name": "Logistiker",
+			"notes": "Bewegst du als Logistiker eine Spielfigur so, als wäre es deine eigene, müssen Karten für eventuelle Charter- und Direktflüge aus deiner Hand kommen. Wirfst du eine Karte für eine Charterflug ab, muss die Karte dem Standort dieser Spielfigur entsprechen."
+		},
+		"medic": {
+			"actions": {
+				"1": "Wenn der Sanitäter die Aktion „Seuche behandeln durchführt, entfernt er nicht nur 1 Seuchenwürfel aus der Stadt, sondern gleich alle Würfel einer Farbe.",
+				"2": "Würfel von Seuchen, die bereits geheilt sind, entfernt er ab dann sogar automatisch, ohne dafür Aktionen aufwenden zu müssen. Seine reine Präsenz in einer Stadt reicht dafür aus."
+			},
+			"name": "Sanitäter",
+			"notes": "Die Fähigkeit, alle Würfel von geheilten Seuchen automatisch aus einer Stadt zu entfernen, tritt auch dann in Kraft, wenn der Sanitäter vom Logistiker oder mit der Ereigniskarte „Freiflug“ in eine Stadt bewegt wird."
+		},
+		"operationsExpert": {
+			"actions": {
+				"1": "Der Betriebsexperte darf mit 1 Aktion ein Forschungszentrum in der Stadt errichten, in der er sich gerade befindet, ohne dafür eine Stadtkarte abwerfen (oder verwenden) zu müssen",
+				"2": "Der Betriebsexperte darf mit 1 Aktion einmal in seinem Zug eine beliebige  Stadtkarte abwerfen, um sich von einer Stadt mit Forschungszentrum in eine beliebige andere Stadt zu bewegen."
+			},
+			"name": "Betriebsexperte",
+			"notes": "Wenn der Logistiker den Betriebsexperten bewegt, darf er nur normale Bewegungsaktionen durchführen, niemals die besondere Bewegungsfähigkeit des Betriebsexperten."
+		},
+		"quarantineSpecialist": {
+			"actions": {
+				"1": "Die Quarantäne-Spezialistin verhindert Ausbrüche und das Platzieren von neuen Seuchenwürfeln sowohl an ihrem momentanen Standort als auch in jeder Stadt, die mit ihrem Standort verbunden ist. Sie beeinfl usst keine Würfel, die während der Spielvorbereitung platziert werden."
+			},
+			"name": "Quarantäne-Spezialistin"
+		},
+		"researcher": {
+			"actions": {
+				"1": "Die Forscherin darf bei der Aktion „Wissen teilen“ Folgendes tun: Anstelle der zur Stadt passenden Karte, darf sie einem Mitspieler, der mit ihr in einer Stadt steht, eine beliebige Stadtkarte geben (aber nicht erhalten!). Das gilt auch, wenn der Mitspieler die Aktion am gemeinsamen Standort auslöst."
+			},
+			"name": "Forscher"
+		},
+		"scientist": {
+			"actions": {
+				"1": "Die Wissenschaftlerin benötigt nur 4 Stadtkarten der gleichen Farbe (und nicht 5), um das Heilmittel für die Seuche der jeweiligen Farbe zu entdecken."
+			},
+			"name": "Wissenschaftler"
+		}
+	}
+}

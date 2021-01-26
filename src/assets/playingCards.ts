@@ -4,46 +4,42 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Zähe Bevölkerung",
-            description: "Entferne eine Karte vom" +
-            " Infektionsablegestapel aus dem Spiel."
+            name: "resilientPopulation",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Eine ruhige Nacht",
-            description: "Die nächste Infektionsphase (egal welcher Spieler dann am Zug ist)" +
-              " wird komplett übersprungen."
+            name: "oneQuietNight",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Prognose",
-            description: "Ziehe die nächsten 6 Karten des Infektionsstapels. Schaue dir die" +
-              " Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel."
+            name: "forecast",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Statliche Subvention",
-            description: "Setze eine Forschungsstation in eine beliebige Stadt (keine Stadtkarte" +
-              " nötig."
+            name: "governmentGrant",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Freiflug",
-            description: "Bewege eine beliebige Spielfigur in eine bleibige andere Stadt."
+            name: "airlift",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.City,
         city: {
-            city: "Riad",
+            city: "riad",
             country: "Saudi-Arabien",
             region: Region.Black,
             population: 6506700
@@ -52,7 +48,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Seoul",
+            city: "seoul",
             country: "Südkorea",
             region: Region.Red,
             population: 25600000
@@ -61,7 +57,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Hongkong",
+            city: "hongkong",
             country: "China",
             region: Region.Red,
             population: 7409800
@@ -70,7 +66,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Mailand",
+            city: "milan",
             country: "Italien",
             region: Region.Blue,
             population: 5270000
@@ -79,7 +75,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Madrid",
+            city: "madrid",
             country: "Spanien",
             region: Region.Blue,
             population: 6529700
@@ -88,7 +84,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Taipei",
+            city: "taipei",
             country: "Taiwan",
             region: Region.Red,
             population: 7047559
@@ -97,7 +93,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Istanbul",
+            city: "istanbul",
             country: "Türkei",
             region: Region.Black,
             population: 14741000
@@ -106,7 +102,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Mexiko Stadt",
+            city: "mexicoCity",
             country: "Mexiko",
             region: Region.Yellow,
             population: 21157000
@@ -115,7 +111,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Khartum",
+            city: "khartoum",
             country: "Sudan",
             region: Region.Yellow,
             population: 5274321
@@ -124,7 +120,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Peking",
+            city: "beijing",
             country: "China",
             region: Region.Red,
             population: 24000000
@@ -133,7 +129,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Sao Paolo",
+            city: "saoPaulo",
             country: "Brasilien",
             region: Region.Yellow,
             population: 23455256
@@ -142,7 +138,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Lima",
+            city: "lima",
             country: "Peru",
             region: Region.Yellow,
             population: 12140000
@@ -151,7 +147,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Tokio",
+            city: "tokyo",
             country: "Japan",
             region: Region.Red,
             population: 38305000
@@ -160,7 +156,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Santiago",
+            city: "santiago",
             country: "Chile",
             region: Region.Yellow,
             population: 7036792
@@ -169,7 +165,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Bangkok",
+            city: "bangkok",
             country: "Thailand",
             region: Region.Red,
             population: 14626225
@@ -178,7 +174,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Los Angeles",
+            city: "losAngeles",
             country: "USA",
             region: Region.Yellow,
             population: 13131431
@@ -187,7 +183,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Buenos Aires",
+            city: "buenosAires",
             country: "Argentinien",
             region: Region.Yellow,
             population: 13591863
@@ -196,7 +192,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Kinshasa",
+            city: "kinshasa",
             country: "Kongo",
             region: Region.Yellow,
             population: 11855000
@@ -205,7 +201,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Lagos",
+            city: "lagos",
             country: "Nigeria",
             region: Region.Yellow,
             population: 21000000
@@ -223,7 +219,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Teheran",
+            city: "tehran",
             country: "Iran",
             region: Region.Black,
             population: 8846782
@@ -232,7 +228,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Miami",
+            city: "miami",
             country: "USA",
             region: Region.Yellow,
             population: 5564635
@@ -241,7 +237,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Johannesburg",
+            city: "johannesburg",
             country: "Südafrika",
             region: Region.Yellow,
             population: 9616000
@@ -250,7 +246,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Karachi",
+            city: "karachi",
             country: "Pakistan",
             region: Region.Black,
             population: 23000000
@@ -259,7 +255,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Washington",
+            city: "washington",
             country: "USA",
             region: Region.Blue,
             population: 4586770
@@ -268,7 +264,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "New York",
+            city: "newYork",
             country: "USA",
             region: Region.Blue,
             population: 23723696
@@ -277,7 +273,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "San Francisco",
+            city: "sanFrancisco",
             country: "USA",
             region: Region.Blue,
             population: 4727357
@@ -286,7 +282,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Montreal",
+            city: "montreal",
             country: "Kanada",
             region: Region.Blue,
             population: 3519595
@@ -295,7 +291,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "St. Petersburg",
+            city: "stPetersburg",
             country: "Russland",
             region: Region.Blue,
             population: 5281579
@@ -304,7 +300,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "London",
+            city: "london",
             country: "Großbritannien",
             region: Region.Blue,
             population: 13709000
@@ -313,7 +309,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Kalkutta",
+            city: "calcutta",
             country: "Indien",
             region: Region.Black,
             population: 14617882
@@ -322,7 +318,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Madras",
+            city: "madras",
             country: "Indien",
             region: Region.Black,
             population: 10265000
@@ -331,7 +327,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Mumbai",
+            city: "mumbai",
             country: "Indien",
             region: Region.Black,
             population: 18414288
@@ -340,7 +336,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Bagdad",
+            city: "bagdad",
             country: "Irak",
             region: Region.Black,
             population: 8765000
@@ -349,7 +345,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Bogota",
+            city: "bogota",
             country: "Kolumbien",
             region: Region.Yellow,
             population: 10200000
@@ -358,7 +354,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Moskau",
+            city: "moscow",
             country: "Russland",
             region: Region.Blue,
             population: 16170000
@@ -367,7 +363,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Shanghai",
+            city: "shanghai",
             country: "China",
             region: Region.Red,
             population: 35965403
@@ -376,7 +372,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Sydney",
+            city: "sydney",
             country: "Australien",
             region: Region.Red,
             population: 5029711
@@ -385,7 +381,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Jakarta",
+            city: "jakarta",
             country: "Indonesien",
             region: Region.Red,
             population: 30214303
@@ -394,7 +390,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Algier",
+            city: "algiers",
             country: "Algerien",
             region: Region.Black,
             population: 7796923
@@ -403,7 +399,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Osaka",
+            city: "osaka",
             country: "Japan",
             region: Region.Red,
             population: 19341976
@@ -412,7 +408,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Atlanta",
+            city: "atlanta",
             country: "USA",
             region: Region.Blue,
             population: 4975300
@@ -421,7 +417,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Ho Chi Minh Stadt",
+            city: "hoChiMinhCity",
             country: "Vietnam",
             region: Region.Red,
             population: 13000000
@@ -430,7 +426,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Manila",
+            city: "manila",
             country: "Philippinen",
             region: Region.Red,
             population: 12877253
@@ -439,7 +435,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Delhi",
+            city: "delhi",
             country: "Indien",
             region: Region.Black,
             population: 26454000
@@ -448,7 +444,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Chicago",
+            city: "chicago",
             country: "USA",
             region: Region.Blue,
             population: 9512999
@@ -457,7 +453,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Essen",
+            city: "essen",
             country: "Deutschland",
             region: Region.Blue,
             population: 583084
@@ -466,7 +462,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Kairo",
+            city: "cairo",
             country: "Ägypten",
             region: Region.Black,
             population: 20439541

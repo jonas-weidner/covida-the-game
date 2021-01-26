@@ -6,7 +6,8 @@
                 <div class="draggable-item cursor-pointer">
                     <div v-if="card.type === 'CITY'" class="flex items-center justify-end relative">
                         <div :class="regionClass(card.city.region)" />
-                        <div class="w-3/5 text-sm py-1">{{ card.city.city }}</div>
+                        <div class="w-3/5 text-sm py-1">
+                            {{ $t(`cities.${card.city.city}`) }}</div>
                         <div class="w-1/5 text-xs font-light text-gray-400">
                             {{ population(card.city.population) }}
                         </div>
@@ -36,7 +37,7 @@
                     </div>
 
                     <div v-if="card.type === 'PANDEMIC'" class="flex items-center justify-end">
-                        <div class="w-3/5 text-sm py-1">Epidemie</div>
+                        <div class="w-3/5 text-sm py-1">{{ $t('playerCards.pandemic') }}</div>
                         <div class="w-1/5"/>
                         <c-icon-button
                             v-if="currentUser"
@@ -100,9 +101,9 @@ export default class PlayingCards extends Vue {
     }
 
     public async playHandCard(card: PlayingCard, remove?: boolean): Promise<void> {
-        if (card.type === PlayingCardType.Action && card.action?.name === "Zähe Bevölkerung")
+        if (card.type === PlayingCardType.Action && card.action?.name === "resilientPopulation")
             (this.$refs.resilient as any).open();
-        else if (card.type === PlayingCardType.Action && card.action?.name === "Prognose")
+        else if (card.type === PlayingCardType.Action && card.action?.name === "forecast")
             (this.$refs.forecast as any).open();
 
         return await playHandCard(card, remove);

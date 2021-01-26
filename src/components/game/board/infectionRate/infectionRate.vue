@@ -4,7 +4,7 @@
          @mouseleave="show = false"
     >
         <div class="flex space-x-1.5 justify-end">
-            <p class="text-lg font-bold select-none">Infektionsgrad</p>
+            <p class="text-lg font-bold select-none">{{ $t('infections.infectionRate') }}</p>
             <p v-if="!show" class="text-lg font-bold select-none">
                 {{ game.infectionRate }}
             </p>

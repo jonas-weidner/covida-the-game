@@ -15,7 +15,8 @@
                 </div>
 
                 <div class="playing-cards-wrapper rounded-tr-2xl shadow-2xl">
-                    <h2 class="text-lg font-bold select-none text-center">Spielerkarten</h2>
+                    <h2 class="text-lg font-bold select-none text-center">
+                        {{ $t('playerCards.playerCards') }}</h2>
                     <div class="flex justify-between items-end space-x-4">
                         <player-discard-pile v-if="game" :game="game" />
                         <playing-card-deck :game="game" />
@@ -23,7 +24,8 @@
                 </div>
 
                 <div class="infection-wrapper rounded-tl-2xl shadow-2xl">
-                    <h2 class="text-lg font-bold select-none text-center">Infektionskarten</h2>
+                    <h2 class="text-lg font-bold select-none text-center">
+                        {{ $t('infections.infectionCards') }}</h2>
                     <div class="flex justify-between items-end space-x-4">
                         <draw-infection-card :game="game" />
                         <infection-discard-pile
@@ -59,7 +61,7 @@ import DrawInfectionCard from "@/components/game/board/drawInfectionCard";
 import NextTurn from "@/components/game/board/nextTurn";
 import Medicines from "@/components/game/board/medicines";
 import ResizeButton from "@/components/game/resizeButton";
-import UndoButton from "@/components/game/undoButton";
+import UndoButton from "@/components/game/board/undoButton";
 import PlayingCardDeck from "@/components/game/board/playingCardDeck";
 import { Vue, Component, Watch } from "vue-property-decorator";
 import { database } from "@/services/firebase";

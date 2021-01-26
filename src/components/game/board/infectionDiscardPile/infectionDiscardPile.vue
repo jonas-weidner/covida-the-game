@@ -4,13 +4,13 @@
          class="w-44"
     >
         <div class="flex justify-end">
-            <h2 class="font-bold select-none">Ablegestapel</h2>
+            <h2 class="font-bold select-none">{{ $t('other.discardPile') }}</h2>
         </div>
         <transition name="slide-fade" mode="out-in">
             <div :class="discardClasses">
                 <div v-if="sortedDiscardPile.length === 0"
                      class="text-xs font-semibold select-none">
-                    Keine Karten im Stapel
+                    {{ $t('other.noCardsInDeck') }}
                 </div>
                 <div
                     class="rounded bg-gray-200 font-semibold mb-1"
@@ -18,14 +18,14 @@
                 >
                     <div class="flex items-center relative">
                         <div :class="regionClass(card.region)" />
-                        <div class="pl-8 text-sm text-left">{{ card.city }}</div>
+                        <div class="pl-8 text-sm text-left">{{ $t(`cities.${card.city}`) }}</div>
                     </div>
 
                 </div>
             </div>
         </transition>
         <div class="flex items-center justify-center space-x-3 mt-3" v-if="pandemicCardOnHand">
-            <c-tooltip has-arrow label="Unterste Karte ziehen" placement="left">
+            <c-tooltip has-arrow :label="$t('infections.drawBottomCard')" placement="left">
                 <c-icon-button
                     :isRound="true"
                     variant-color="blue"
@@ -38,7 +38,7 @@
                 />
             </c-tooltip>
 
-            <c-tooltip has-arrow label="Ablegestapel mischen und zurück legen" placement="left">
+            <c-tooltip has-arrow :label="$t('infections.reshuffleAndBack')" placement="left">
                 <c-icon-button
                     :isRound="true"
                     variant-color="blue"

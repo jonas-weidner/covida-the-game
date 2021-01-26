@@ -1,7 +1,7 @@
 <template>
     <div class="logout-button">
         <c-button variant-color="blue" size="sm" @click="logout">
-            <div class="text-xs">Ausloggen</div>
+            <div class="text-xs">{{ $t("menu.logout") }}</div>
         </c-button>
     </div>
 </template>
