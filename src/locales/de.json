@@ -1,4 +1,26 @@
 {
+	"actionCards": {
+		"airlift": {
+			"description": "Bewege eine beliebige Spielfigur in eine bleibige andere Stadt.",
+			"name": "Freiflug"
+		},
+		"forecast": {
+			"description": "Ziehe die nächsten 6 Karten des Infektionsstapels.  Schaue dir die Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel.",
+			"name": "Prognose"
+		},
+		"governmentGrant": {
+			"description": "Setze eine Forschungsstation in eine beliebige Stadt (keine Stadtkarte nötig).",
+			"name": "Statliche Subvention"
+		},
+		"oneQuietNight": {
+			"description": "Die nächste Infektionsphase (egal welcher Spieler dann am Zug ist) wird komplett übersprungen.",
+			"name": "Eine ruhige Nacht"
+		},
+		"resilientPopulation": {
+			"description": "Entferne eine Karte vom Infektionsablegestapel aus dem Spiel.",
+			"name": "Zähe Bevölkerung"
+		}
+	},
 	"cities": {
 		"algiers": "Algier",
 		"atlanta": "Atlanta",

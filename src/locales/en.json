@@ -1,4 +1,26 @@
 {
+	"actionCards": {
+		"airlift": {
+			"description": "Move any 1 pawn to any city.  Get permission before moving another player's pawn.",
+			"name": "Airlift"
+		},
+		"forecast": {
+			"description": "Draw the next 6 cards from the infection deck.  Look at the cards and put them back in an order of your choice.",
+			"name": "Forecast"
+		},
+		"governmentGrant": {
+			"description": "Place a research station at any city without the need for a city card.",
+			"name": "Government grant"
+		},
+		"oneQuietNight": {
+			"description": "Skip the next infect cities step (do not flip over any infection cards)",
+			"name": "One quiet night"
+		},
+		"resilientPopulation": {
+			"description": "Remove one card from the infection discard pile from the game.",
+			"name": "Resilient population"
+		}
+	},
 	"cities": {
 		"algiers": "Algiers",
 		"atlanta": "Atlanta",

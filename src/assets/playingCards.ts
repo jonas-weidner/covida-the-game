@@ -4,40 +4,36 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Zähe Bevölkerung",
-            description: "Entferne eine Karte vom" +
-            " Infektionsablegestapel aus dem Spiel."
+            name: "resilientPopulation",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Eine ruhige Nacht",
-            description: "Die nächste Infektionsphase (egal welcher Spieler dann am Zug ist)" +
-              " wird komplett übersprungen."
+            name: "oneQuietNight",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Prognose",
-            description: "Ziehe die nächsten 6 Karten des Infektionsstapels. Schaue dir die" +
-              " Karten an und lege sie in beliebiger Reihenfolge zurück auf den Stapel."
+            name: "forecast",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Statliche Subvention",
-            description: "Setze eine Forschungsstation in eine beliebige Stadt (keine Stadtkarte" +
-              " nötig."
+            name: "governmentGrant",
+            description: "description"
         }
     },
     {
         type: PlayingCardType.Action,
         action: {
-            name: "Freiflug",
-            description: "Bewege eine beliebige Spielfigur in eine bleibige andere Stadt."
+            name: "airlift",
+            description: "description"
         }
     },
     {

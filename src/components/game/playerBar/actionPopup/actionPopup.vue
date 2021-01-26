@@ -1,7 +1,7 @@
 <template>
     <div >
         <p class="cursor-pointer" @click="open">
-            {{ action ? action.name : "" }}
+            {{ action ? $t(`actionCards.${action.name}.name`) : "" }}
         </p>
 
         <c-modal
@@ -9,10 +9,10 @@
             :on-close="close"
         >
             <c-modal-content ref="content">
-                <c-modal-header>{{ action.name }}</c-modal-header>
+                <c-modal-header>{{ $t(`actionCards.${action.name}.name`) }}</c-modal-header>
                 <c-modal-close-button />
                 <c-modal-body class="mb-4">
-                    <p>{{ action.description }}</p>
+                    <p>{{ $t(`actionCards.${action.name}.description`) }}</p>
                 </c-modal-body>
             </c-modal-content>
             <c-modal-overlay />
