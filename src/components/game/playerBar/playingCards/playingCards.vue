@@ -97,7 +97,7 @@ export default class PlayingCards extends Vue {
     }
 
     public getChildPayload(index: number): PlayingCard {
-        return this.player.playingCards[index];
+        return JSON.parse(JSON.stringify(this.player.playingCards)).reverse()[index];
     }
 
     public async playHandCard(card: PlayingCard, remove?: boolean): Promise<void> {
@@ -116,7 +116,9 @@ export default class PlayingCards extends Vue {
     public onDrop(dropResult: { removedIndex: number; addedIndex: number; payload: PlayingCard }): void {
         if (dropResult.removedIndex != null || dropResult.addedIndex != null)
             this.$emit("player-deck-update", {
-                newDeck: applyDrag(this.sortedPlayingCards, dropResult).reverse(),
+                newDeck: (dropResult.removedIndex == null || dropResult.addedIndex == null) ?
+                    applyDrag(this.sortedPlayingCards, dropResult) :
+                    applyDrag(this.sortedPlayingCards, dropResult).reverse(),
                 dropResult: dropResult
             });
     }

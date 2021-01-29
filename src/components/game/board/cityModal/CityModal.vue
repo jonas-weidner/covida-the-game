@@ -1,5 +1,9 @@
 <template>
-    <div class="flex justify-between items-center cursor-pointer" @click="open">
+    <div class="flex justify-between items-center cursor-pointer"
+         @click="open"
+         v-touch:longtap="open"
+         v-touch="open"
+    >
         <div class="font-bold pt-0.5">{{ $t(`cities.${city.city}`) }}</div>
         <font-awesome-icon icon="external-link-alt" />
 

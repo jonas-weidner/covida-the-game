@@ -119,8 +119,9 @@ export default class Board extends Vue {
         return this.game.cities.filter((city) => city.location);
     }
 
-    get shouldPan(): any {
-        return () => this.focused != null;
+    public shouldPan(e: any): any {
+        console.log(e, this.focused);
+        return this.focused != null;
     }
 
     public cityClasses(region: Region): string {
@@ -134,7 +135,7 @@ export default class Board extends Vue {
     }
 
     public cityPopoverClasses(position: string): string {
-        return `city-popover-${position} rounded-sm shadow-lg w-11`;
+        return `city-popover-${position} rounded-sm shadow-lg w-11 select-none`;
     }
 
     public async changeDiseaseLevel(city: City, color: string, decrease?: boolean): Promise<void> {

@@ -2,7 +2,7 @@
     <div class="flex justify-center h-full w-full">
         <div v-for="player in game.players"
              :key="player.id"
-             class="mx-2 w-1/4 xl:w-1/6 bg-white p-2 shadow-2xl
+             class="mx-2 w-1/4 2xl:w-1/6 bg-white p-2 shadow-2xl
              overflow-x-hidden overflow-y-scroll rounded-lg"
         >
             <div class="flex w-full justify-between text-white
@@ -72,12 +72,12 @@ export default class PlayerBar extends Vue {
         return "#1972FF";
     }
 
-    public playerDeckUpdate(player: Player, action: { newDeck: PlayingCard[]; dropResult: {
-        removedIndex: number; addedIndex: number; payload: PlayingCard; }; }): void {
+    public async playerDeckUpdate(player: Player, action: { newDeck: PlayingCard[]; dropResult: {
+        removedIndex: number; addedIndex: number; payload: PlayingCard; }; }): Promise<void> {
         const { removedIndex, addedIndex } = action.dropResult;
 
         if (removedIndex != null && addedIndex != null) {
-            updatePlayerPlayingCards(action.newDeck, player);
+            await updatePlayerPlayingCards(action.newDeck, player);
         } else {
             const alteredPlayer = { ...player };
             alteredPlayer.playingCards = action.newDeck.reverse();
@@ -86,7 +86,7 @@ export default class PlayerBar extends Vue {
     }
 
     private async performPlayerChanges(array: Player[]): Promise<void> {
-        const newPlayers = [...this.game.players];
+        const newPlayers: Player[] = JSON.parse(JSON.stringify(this.game.players));
         const firstIndex = newPlayers.findIndex((player) => player.id === array[0].id) as number;
         const secondIndex = newPlayers.findIndex((player) => player.id === array[1].id) as number;
         newPlayers[firstIndex] = array[0];
