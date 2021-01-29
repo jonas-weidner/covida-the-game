@@ -174,7 +174,7 @@
 		},
 		"quarantineSpecialist": {
 			"actions": {
-				"1": "The Quarantine Specialist prevents both outbreaks and the placement of disease cubes in the city she is in and all cities connected to that city. She does not affect cubes placed during setup."
+				"1": "The Quarantine Specialist prevents both outbreaks and the placement of disease cubes in the city she is in and all cities connected to that city.  She does not affect cubes placed during setup."
 			},
 			"name": "Quarantine Specialist"
 		},

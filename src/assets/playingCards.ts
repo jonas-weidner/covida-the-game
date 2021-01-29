@@ -210,7 +210,7 @@ export const playingCards: PlayingCard[] = [
     {
         type: PlayingCardType.City,
         city: {
-            city: "Paris",
+            city: "paris",
             country: "Frankreich",
             region: Region.Blue,
             population: 12405426

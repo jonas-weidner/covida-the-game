@@ -10,7 +10,7 @@
 		},
 		"governmentGrant": {
 			"description": "Setze eine Forschungsstation in eine beliebige Stadt (keine Stadtkarte nötig).",
-			"name": "Statliche Subvention"
+			"name": "Staatliche Subvention"
 		},
 		"oneQuietNight": {
 			"description": "Die nächste Infektionsphase (egal welcher Spieler dann am Zug ist) wird komplett übersprungen.",
@@ -174,7 +174,7 @@
 		},
 		"quarantineSpecialist": {
 			"actions": {
-				"1": "Die Quarantäne-Spezialistin verhindert Ausbrüche und das Platzieren von neuen Seuchenwürfeln sowohl an ihrem momentanen Standort als auch in jeder Stadt, die mit ihrem Standort verbunden ist. Sie beeinfl usst keine Würfel, die während der Spielvorbereitung platziert werden."
+				"1": "Die Quarantäne-Spezialistin verhindert Ausbrüche und das Platzieren von neuen Seuchenwürfeln sowohl an ihrem momentanen Standort als auch in jeder Stadt, die mit ihrem Standort verbunden ist. Sie beeinflusst keine Würfel, die während der Spielvorbereitung platziert werden."
 			},
 			"name": "Quarantäne-Spezialistin"
 		},
