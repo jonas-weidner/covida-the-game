@@ -29,10 +29,13 @@ export default class ActionPopup extends Vue {
     @Prop({ required: true }) action!: ActionCard;
     public isOpen = false;
 
-    open() {
+    public open() {
+        this.$store.commit("setModalState", true);
         this.isOpen = true;
     }
-    close() {
+
+    public close() {
+        this.$store.commit("setModalState", false);
         this.isOpen = false;
     }
 }

@@ -9,7 +9,8 @@ export default new Vuex.Store({
         currentGameCode: null! as string,
         goToPlayer: null! as any,
         authorizedPlayers: [] as string[],
-        game: null! as Game
+        game: null! as Game,
+        modalOpen: false
     },
     getters: {
         getCurrentGameCode: (state): string => {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
         },
         getGame: (state): Game => {
             return state.game;
+        },
+        getModalState: (state): boolean => {
+            return state.modalOpen;
         }
     },
     mutations: {
@@ -37,6 +41,9 @@ export default new Vuex.Store({
         },
         setGame(state, game: Game) {
             state.game = game;
+        },
+        setModalState(state, open: boolean) {
+            state.modalOpen = open;
         }
     },
     actions: {},

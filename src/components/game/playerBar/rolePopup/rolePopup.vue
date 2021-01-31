@@ -38,9 +38,11 @@ export default Vue.extend({
     },
     methods: {
         open() {
+            this.$store.commit("setModalState", true);
             this.isOpen = true;
         },
         close() {
+            this.$store.commit("setModalState", false);
             this.isOpen = false;
         }
     }

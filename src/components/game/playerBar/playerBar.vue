@@ -1,12 +1,11 @@
 <template>
-    <div class="flex justify-center h-full w-full">
+    <div class="flex justify-center h-full w-full relative">
         <div v-for="player in game.players"
              :key="player.id"
              class="mx-2 w-1/4 2xl:w-1/6 bg-white p-2 shadow-2xl
-             overflow-x-hidden overflow-y-scroll rounded-lg"
+             overflow-x-hidden overflow-y-scroll rounded-lg relative"
         >
-            <div class="flex w-full justify-between text-white
-                    items-center rounded sticky top-0 z-10"
+            <div :class="stickyClasses"
                 :style="{ backgroundColor: roleColor(player) }"
             >
                 <div class="flex items-center space-x-0.5">
@@ -60,6 +59,13 @@ export default class PlayerBar extends Vue {
             this.performPlayerChanges(array);
             this.playersWithDeckUpdates = [];
         }
+    }
+
+    get stickyClasses(): string {
+        const modalOpen = this.$store.getters.getModalState;
+        if (modalOpen)
+            return "flex w-full justify-between text-white items-center rounded top-0";
+        return "flex w-full justify-between text-white items-center rounded top-0 z-10 sticky";
     }
 
     public activePlayer(player: Player): boolean {

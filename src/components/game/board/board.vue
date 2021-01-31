@@ -14,6 +14,7 @@
                     top: `${city.location.top}%`,
                     paddingLeft: '0.5px'
                 }"
+
             >
                 <div
                     class="w-full h-full flex items-center justify-center"
@@ -119,8 +120,7 @@ export default class Board extends Vue {
         return this.game.cities.filter((city) => city.location);
     }
 
-    public shouldPan(e: any): any {
-        console.log(e, this.focused);
+    public shouldPan(): any {
         return this.focused != null;
     }
 
@@ -170,6 +170,7 @@ export default class Board extends Vue {
     }
 
     public async placeOrRemoveResearchStation(city: City): Promise<void> {
+        console.log("Called");
         const cities = [...this.game.cities];
         const cityIndex = cities.findIndex((cit) => cit.city === city.city);
         cities[cityIndex].researchStation = !cities[cityIndex].researchStation;

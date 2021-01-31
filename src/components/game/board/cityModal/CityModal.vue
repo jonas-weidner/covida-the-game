@@ -1,7 +1,6 @@
 <template>
     <div class="flex justify-between items-center cursor-pointer"
          @click="open"
-         v-touch:longtap="open"
          v-touch="open"
     >
         <div class="font-bold pt-0.5">{{ $t(`cities.${city.city}`) }}</div>
@@ -92,10 +91,13 @@ export default class CityModal extends Vue {
     public playersToLocation: { playerId: string; city: string }[] = [];
     public colors: string[] = ["black", "blue", "red", "yellow"];
 
-    open() {
+    public open() {
+        this.$store.commit("setModalState", true);
         this.isOpen = true;
     }
-    close() {
+    
+    public close() {
+        this.$store.commit("setModalState", false);
         this.isOpen = false;
     }
 

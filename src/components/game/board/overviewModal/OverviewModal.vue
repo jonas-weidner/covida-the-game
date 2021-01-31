@@ -81,10 +81,12 @@ export default class OverviewModal extends Vue {
     }
 
     public open() {
+        this.$store.commit("setModalState", true);
         this.isOpen = true;
     }
 
     public close() {
+        this.$store.commit("setModalState", false);
         this.isOpen = false;
     }
 }

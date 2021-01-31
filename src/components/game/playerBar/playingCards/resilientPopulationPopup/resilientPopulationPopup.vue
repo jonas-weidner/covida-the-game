@@ -50,8 +50,15 @@ export default class ResilientPopulationPopup extends Vue {
     }
 
     public isOpen = false;
-    public open() { this.isOpen = true; }
-    public close() { this.isOpen = false; }
+    public open() {
+        this.$store.commit("setModalState", true);
+        this.isOpen = true;
+    }
+
+    public close() {
+        this.$store.commit("setModalState", false);
+        this.isOpen = false;
+    }
 
     public regionClass(region: Region): string {
         return `region rounded text-left ${region}`;

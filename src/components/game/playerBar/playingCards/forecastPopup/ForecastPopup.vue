@@ -66,8 +66,13 @@ export default class ForecastPopup extends Vue {
     }
 
     public isOpen = false;
-    public open() { this.isOpen = true; }
+    public open() {
+        this.$store.commit("setModalState", true);
+        this.isOpen = true;
+    }
+
     public async close() {
+        this.$store.commit("setModalState", false);
         this.isOpen = false;
 
         const reversedSix = JSON.parse(JSON.stringify(this.firstSix)).reverse();
