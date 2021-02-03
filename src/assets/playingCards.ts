@@ -356,7 +356,7 @@ export const playingCards: PlayingCard[] = [
         city: {
             city: "moscow",
             country: "Russland",
-            region: Region.Blue,
+            region: Region.Black,
             population: 16170000
         }
     },

@@ -598,7 +598,7 @@ export const cities: City[] = [
     },
     {
         city: "moscow",
-        region: Region.Blue,
+        region: Region.Black,
         researchStation: false,
         diseaseCubes: {
             yellow: 0,

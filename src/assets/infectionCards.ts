@@ -214,7 +214,7 @@ export const infectionCards: CityCard[] = [
     {
         city: "moscow",
         country: "Russland",
-        region: Region.Blue,
+        region: Region.Black,
         population: 16170000
     },
     {
