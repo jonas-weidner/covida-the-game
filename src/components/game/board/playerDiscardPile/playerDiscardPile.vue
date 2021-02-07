@@ -68,7 +68,7 @@ export default class PlayingCards extends Vue {
     get isCrisisManager(): boolean {
         const currentId = auth.currentUser?.uid;
         const currentPlayer = this.game.players.find((player) => player.id === currentId);
-        return currentPlayer?.role?.name === "Krisenmanager";
+        return currentPlayer?.role?.name === "contingencyPlanner";
     }
 
     public regionClass(region: Region): string {
