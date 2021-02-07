@@ -191,6 +191,10 @@
 			"name": "Scientist"
 		}
 	},
+	"youWonModal": {
+		"body": "Enjoy the moment, you saved the world.",
+		"title": "Congratulations!"
+	},
 	"yourTurnModal": {
 		"body": "Your turn consists of three parts.  First you can do up to 4 actions (e.g. drive, flight, build a research station).  Next you draw two cards from the Player Deck and then you draw the amount of infection cards that correspond to the infection rate.",
 		"letsGo": "Let's go",

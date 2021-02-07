@@ -46,6 +46,7 @@
         </splitpanes>
         <resize-button @resize="toggleResize" :expanded="expanded" />
         <your-turn-modal ref="yourTurnModal" />
+        <you-won-modal :game="game" />
     </div>
 </template>
 
@@ -71,9 +72,11 @@ import { Splitpanes, Pane } from "splitpanes";
 import "splitpanes/dist/splitpanes.css";
 import YourTurnModal from "@/components/game/yourTurnModal/YourTurnModal.vue";
 import OverviewModal from "@/components/game/board/overviewModal/OverviewModal.vue";
+import YouWonModal from "@/components/game/youWonModal/YouWonModal.vue";
 
 @Component({
     components: {
+        YouWonModal,
         OverviewModal,
         YourTurnModal,
         ResizeButton,

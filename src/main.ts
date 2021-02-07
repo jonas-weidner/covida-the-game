@@ -30,7 +30,9 @@ import Autocomplete from "@trevoreyre/autocomplete-vue";
 import "@trevoreyre/autocomplete-vue/dist/style.css";
 import i18n from "./i18n";
 import Vue2TouchEvents from "vue2-touch-events";
+import VueConfetti from "vue-confetti";
 
+Vue.use(VueConfetti);
 Vue.use(Vue2TouchEvents);
 Vue.use(Autocomplete);
 Vue.use(panZoom);
@@ -65,6 +67,7 @@ Vue.use(Chakra, {
 declare module "vue/types/vue" {
     interface Vue {
         $toast: Chakra;
+        $confetti: VueConfetti;
     }
 }
 

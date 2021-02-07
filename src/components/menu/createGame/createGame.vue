@@ -8,7 +8,6 @@
             <c-radio :value=2>2 {{ $t('menu.players') }}</c-radio>
             <c-radio :value=3>3 {{ $t('menu.players') }}</c-radio>
             <c-radio :value=4>4 {{ $t('menu.players') }}</c-radio>
-            <c-radio :value=5>5 {{ $t('menu.players') }}</c-radio>
         </c-radio-group>
 
         <p class="font-bold text-center mb-1">{{ $t('menu.difficulty') }}</p>
