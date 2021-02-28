@@ -27,6 +27,7 @@ export default class YouWonModal extends Vue {
 
     @Watch("game.diseaseStates", { deep: true })
     onDiseaseStateChange(diseaseStates: DiseaseStates, oldStates: DiseaseStates) {
+        if (!diseaseStates || !oldStates) return;
         const notFound = Object.values(diseaseStates)
             .find((state) => state === DiseaseState.NotFound);
 
