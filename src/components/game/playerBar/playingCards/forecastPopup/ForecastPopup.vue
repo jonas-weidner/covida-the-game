@@ -15,7 +15,10 @@
                         <div class="font-bold text-xs">{{ $t('other.top') }}</div>
                         <c-icon name="arrow-down" size="12px" />
                     </div>
-                    <Container @drop="onDrop" group-name="playingCards" :get-child-payload="getChildPayload">
+                    <Container
+                        @drop="onDrop" group-name="playingCards"
+                        :get-child-payload="getChildPayload"
+                    >
                         <Draggable class="rounded bg-gray-200 font-semibold mt-1 overflow-hidden"
                                    v-for="(card, index) in firstSix" :key="index">
                             <div class="draggable-item cursor-pointer">

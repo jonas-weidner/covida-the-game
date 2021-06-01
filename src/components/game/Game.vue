@@ -113,9 +113,9 @@ export default class MainGame extends Vue {
     @Watch("Game.vue", { deep: true })
     onGameUpdate(game: Game, oldGame: Game) {
         const playerId = auth.currentUser?.uid;
-        if (Game && oldGame && playerId) {
+        if (game && oldGame && playerId) {
             const oldGamePlayer = oldGame.players.find((player) => player.id === playerId);
-            const newGamePlayer = Game.players.find((player) => player.id === playerId);
+            const newGamePlayer = game.players.find((player) => player.id === playerId);
 
             if (!oldGamePlayer?.activeTurn && newGamePlayer?.activeTurn)
                 (this.$refs.yourTurnModal as YourTurnModal).open();

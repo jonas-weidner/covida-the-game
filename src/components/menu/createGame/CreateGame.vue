@@ -1,6 +1,6 @@
 <template>
-    <div
-        class="w-1/2 xl:w-1/3 mx-5 flex flex-col justify-end p-10 xl:p-20 bg-gray-100 items-center rounded-2xl">
+    <div class="w-1/2 xl:w-1/3 mx-5 flex flex-col justify-end
+        p-10 xl:p-20 bg-gray-100 items-center rounded-2xl">
         <h2 class="text-4xl font-bold mb-8 text-center">{{ $t('menu.createNewGame') }}</h2>
         <c-input :placeholder="$t('menu.yourName')" v-model="name" />
         <p class="font-bold text-center mt-8 mb-1">{{ $t('menu.numberOfPlayers') }}</p>
