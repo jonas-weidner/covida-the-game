@@ -47,7 +47,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import ActionPopup from "@/components/game/playerBar/actionPopup";
-import { Game, Region } from "@/types";
+import { Game, Region } from "@/interfaces";
 import { auth, pickupDiscardedPlayingCard } from "@/services/firebase";
 
 @Component({ components: { ActionPopup } })

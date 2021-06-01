@@ -7,7 +7,7 @@ import EvaIcons from "vue-eva-icons";
 import VueClipboard from "vue-clipboard2";
 import { firestorePlugin } from "vuefire";
 import { auth } from "@/services/firebase";
-import "./assets/tailwind.css";
+import "./assets/css/tailwind.css";
 import panZoom from "vue-panzoom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
@@ -81,6 +81,3 @@ auth.onAuthStateChanged(() => {
             render: (h) => h(CThemeProvider, [h(App)])
         }).$mount("#app");
 });
-
-
-

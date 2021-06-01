@@ -7,7 +7,7 @@
                 size="lg"
                 icon="play"
                 aria-label="Start game"
-                @click="startGame"
+                @click="StartGame"
                 :isDisabled="notAllPlayersPresent"
             />
         </c-tooltip>
@@ -18,10 +18,9 @@
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { playingCards } from "@/assets/playingCards";
 import { shuffleCards } from "@/services/gameActions";
-import { City, CityCard, Game, Player, PlayingCard, PlayingCardType } from "@/types";
+import { City, CityCard, Game, Player, PlayingCard, PlayingCardType } from "@/interfaces";
 import random from "random";
 import {
-    auth,
     initializeCities,
     initializeInfectionDeck,
     initializeInfectionDiscardPile,
@@ -37,7 +36,6 @@ export default class StartGame extends Vue {
     @Prop({ required: true }) game!: Game;
 
     get notAllPlayersPresent(): boolean {
-        if (auth.currentUser?.email === "jonas@adabt.com") return false;
         return this.game.numberOfPlayers !== this.game.players.length;
     }
 

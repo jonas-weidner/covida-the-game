@@ -24,7 +24,7 @@
                       animation="pulse" fill="limegreen" @click="copyField" />
         </div>
 
-        <c-button class="mt-5 w-full" variant-color="blue" size="md" @click="createGame">
+        <c-button class="mt-5 w-full" variant-color="blue" size="md" @click="CreateGame">
             {{ $t('menu.createGame') }}
         </c-button>
     </div>

@@ -79,7 +79,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { changeDiseaseLevel, updateCities } from "@/services/firebase";
-import { AutoCompleteObject, City, Game, Player } from "@/types";
+import { AutoCompleteObject, City, Game, Player } from "@/interfaces";
 import { cities } from "@/assets/cities";
 
 @Component
@@ -95,7 +95,7 @@ export default class CityModal extends Vue {
         this.$store.commit("setModalState", true);
         this.isOpen = true;
     }
-    
+
     public close() {
         this.$store.commit("setModalState", false);
         this.isOpen = false;

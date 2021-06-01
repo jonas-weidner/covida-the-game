@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { DiseaseState, Game } from "@/types";
+import { DiseaseState, Game } from "@/interfaces";
 import { updateDiseaseStates } from "@/services/firebase";
 
 @Component

@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { PlayingCardType, Region } from "@/types";
+import { PlayingCardType, Region } from "@/interfaces";
 
 export const emptyMockGame: any = {
     gameCode: "anacrustic-outvaluing",

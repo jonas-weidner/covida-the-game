@@ -1,2 +1,2 @@
-import InfectionRate from "./infectionRate.vue";
+import InfectionRate from "./InfectionRate.vue";
 export default InfectionRate;

@@ -1,4 +1,4 @@
-import { City, Region } from "@/types";
+import { City, Region } from "@/interfaces";
 
 export const cities: City[] = [
     {

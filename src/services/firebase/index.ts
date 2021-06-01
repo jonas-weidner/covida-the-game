@@ -11,7 +11,7 @@ import {
     Player,
     PlayingCard,
     PlayingCardType
-} from "@/types";
+} from "@/interfaces";
 import { shuffleCards } from "@/services/gameActions";
 import UserCredential = firebase.auth.UserCredential;
 import DocumentData = firebase.firestore.DocumentData;
@@ -21,10 +21,7 @@ const firebaseConfig = {
     authDomain: process.env.VUE_APP_FIREBASE_AUTHDOMAIN,
     databaseURL: process.env.VUE_APP_FIREBASE_DATABASEURL,
     projectId: process.env.VUE_APP_FIREBASE_PROJECTID,
-    storageBucket: process.env.VUE_APP_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.VUE_APP_FIREBASE_MSSAGINGSENDERID,
-    appId: process.env.VUE_APP_FIREBASE_APPID,
-    measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENTID
+    appId: process.env.VUE_APP_FIREBASE_APPID
 };
 
 export const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -44,7 +41,7 @@ const findGame = async (gameCode: string) => {
 };
 
 export const getAuthorizedPlayers = async (): Promise<string[]> => {
-    const snap = await database.collection("authorized").doc("family").get();
+    const snap = await database.collection("authorized").doc("users").get();
     return snap.data()?.players;
 };
 

@@ -1,2 +1,2 @@
-import Game from "./game.vue";
+import Game from "./Game.vue";
 export default Game;

@@ -59,7 +59,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { Container, Draggable } from "vue-smooth-dnd";
-import { Game, Player, PlayingCard, PlayingCardType, Region } from "@/types";
+import { Game, Player, PlayingCard, PlayingCardType, Region } from "@/interfaces";
 import ActionPopup from "@/components/game/playerBar/actionPopup";
 import numeral from "numeral";
 import { auth, playHandCard } from "@/services/firebase";

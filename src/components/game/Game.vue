@@ -2,25 +2,25 @@
     <div>
         <splitpanes class="default-theme game-bg" horizontal>
             <pane :size="100 - paneSize" min-size="50" :class="boardClasses()">
-                <board :game=game />
+                <board :game=Game />
 
-                <outbreaks v-if="game" :game="game" />
-                <infection-rate v-if="game" :game=game />
+                <outbreaks v-if="Game" :game="Game" />
+                <infection-rate v-if="Game" :game=Game />
 
                 <div class="game-button-wrapper rounded-r-lg flex flex-col space-y-2">
-                    <start-game v-if="game && !game.started" :game=game />
-                    <exit-game v-if="game && game.started" />
-                    <undo-button v-if="game && game.started" :game="game" />
-                    <next-turn v-if="game && game.started" :game="game" />
-                    <overview-modal v-if="game && game.started" :game="game" />
+                    <start-game v-if="Game && !Game.started" :game=Game />
+                    <exit-game v-if="Game && Game.started" />
+                    <undo-button v-if="Game && Game.started" :game="Game" />
+                    <next-turn v-if="Game && Game.started" :game="Game" />
+                    <overview-modal v-if="Game && Game.started" :game="Game" />
                 </div>
 
                 <div class="playing-cards-wrapper rounded-tr-2xl shadow-2xl">
                     <h2 class="text-lg font-bold select-none text-center">
                         {{ $t('playerCards.playerCards') }}</h2>
                     <div class="flex justify-between items-end space-x-4">
-                        <player-discard-pile v-if="game" :game="game" />
-                        <playing-card-deck :game="game" />
+                        <player-discard-pile v-if="Game" :game="Game" />
+                        <playing-card-deck :game="Game" />
                     </div>
                 </div>
 
@@ -28,25 +28,25 @@
                     <h2 class="text-lg font-bold select-none text-center">
                         {{ $t('infections.infectionCards') }}</h2>
                     <div class="flex justify-between items-end space-x-4">
-                        <draw-infection-card :game="game" />
+                        <draw-infection-card :game="Game" />
                         <infection-discard-pile
-                            v-if="game"
-                            :game="game"
+                            v-if="Game"
+                            :game="Game"
                         />
                     </div>
                 </div>
 
-                <medicines :game="game" />
+                <medicines :game="Game" />
             </pane>
 
-            <pane :size="paneSize" min-size="15" v-if="game" :class="playerBarClasses()">
-                <player-bar :game="game" />
+            <pane :size="paneSize" min-size="15" v-if="Game" :class="playerBarClasses()">
+                <player-bar :game="Game" />
             </pane>
 
         </splitpanes>
         <resize-button @resize="toggleResize" :expanded="expanded" />
         <your-turn-modal ref="yourTurnModal" />
-        <you-won-modal :game="game" />
+        <you-won-modal :game="Game" />
     </div>
 </template>
 
@@ -55,7 +55,7 @@ import ExitGame from "@/components/game/board/exitGame";
 import StartGame from "@/components/game/board/startGame";
 import Board from "@/components/game/board";
 import PlayerBar from "@/components/game/playerBar";
-import { Game } from "@/types";
+import { Game } from "@/interfaces";
 import PlayerDiscardPile from "@/components/game/board/playerDiscardPile";
 import InfectionDiscardPile from "@/components/game/board/infectionDiscardPile";
 import Outbreaks from "@/components/game/board/outbreaks";
@@ -110,12 +110,12 @@ export default class MainGame extends Vue {
         );
     }
 
-    @Watch("game", { deep: true })
+    @Watch("Game.vue", { deep: true })
     onGameUpdate(game: Game, oldGame: Game) {
         const playerId = auth.currentUser?.uid;
-        if (game && oldGame && playerId) {
+        if (Game && oldGame && playerId) {
             const oldGamePlayer = oldGame.players.find((player) => player.id === playerId);
-            const newGamePlayer = game.players.find((player) => player.id === playerId);
+            const newGamePlayer = Game.players.find((player) => player.id === playerId);
 
             if (!oldGamePlayer?.activeTurn && newGamePlayer?.activeTurn)
                 (this.$refs.yourTurnModal as YourTurnModal).open();

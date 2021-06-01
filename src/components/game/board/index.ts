@@ -1,2 +1,2 @@
-import Board from "./board.vue";
+import Board from "./Board.vue";
 export default Board;

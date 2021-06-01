@@ -1,4 +1,4 @@
-import { PlayingCard, PlayingCardType, Region } from "@/types";
+import { PlayingCard, PlayingCardType, Region } from "@/interfaces";
 
 export const playingCards: PlayingCard[] = [
     {

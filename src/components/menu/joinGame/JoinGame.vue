@@ -3,7 +3,7 @@
         <h2 class="text-4xl font-bold mb-8 text-center">{{ $t('menu.joinAGame') }}</h2>
         <c-input :placeholder="$t('menu.yourName')" v-model="name" />
         <c-input class="mt-8" :placeholder="$t('menu.gameCode')" v-model="code" />
-        <c-button class="mt-5 w-full" variant-color="blue" size="md" @click="joinGame">
+        <c-button class="mt-5 w-full" variant-color="blue" size="md" @click="JoinGame">
             {{ $t('menu.joinGame') }}
         </c-button>
     </div>

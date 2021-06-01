@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { Game, Region } from "@/types";
+import { Game, Region } from "@/interfaces";
 import { initializeInfectionDiscardPile } from "@/services/firebase";
 
 @Component

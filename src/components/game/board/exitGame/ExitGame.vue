@@ -9,7 +9,7 @@
                 size="sm"
                 icon="sign-out-alt"
                 aria-label="Exit game"
-                @click="exitGame"
+                @click="ExitGame"
             />
         </c-tooltip>
     </div>

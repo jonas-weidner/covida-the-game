@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-import { DiseaseState, DiseaseStates, Game } from "@/types";
+import { DiseaseState, DiseaseStates, Game } from "@/interfaces";
 
 @Component
 export default class YouWonModal extends Vue {

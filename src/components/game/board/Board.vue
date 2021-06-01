@@ -1,7 +1,7 @@
 <template>
     <panZoom @init="onInit" :options="panZoomOptions">
         <div class="flex justify-center items-center relative">
-            <img src="@/assets/world-map.jpg" width="3500px" height="1750px"
+            <img src="@/assets/images/world-map.jpg" width="3500px" height="1750px"
                  style="filter: brightness(70%);"
                  class="select-none"
             />
@@ -24,12 +24,12 @@
                 >
                     <img
                         v-if="city.researchStation"
-                        src="@/assets/icon-ui-2-home.svg" width="50%"
+                        src="@/assets/icons/icon-ui-2-home.svg" width="50%"
                     />
                     <img
                         class="opacity-50"
                         v-if="!city.researchStation && researchFocus === city.city"
-                        src="@/assets/icon-ui-2-home.svg" width="50%"
+                        src="@/assets/icons/icon-ui-2-home.svg" width="50%"
                     />
                 </div>
                 <div
@@ -78,7 +78,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
 import { changeDiseaseLevel, exitGame, updateCities } from "@/services/firebase";
-import { City, Game, Region } from "@/types";
+import { City, Game, Region } from "@/interfaces";
 import { Container, Draggable } from "vue-smooth-dnd";
 import CityModal from "@/components/game/board/cityModal";
 

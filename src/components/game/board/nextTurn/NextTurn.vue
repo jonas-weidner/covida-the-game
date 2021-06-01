@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { auth, nextPlayer } from "@/services/firebase";
-import { Game } from "@/types";
+import { Game } from "@/interfaces";
 
 @Component
 export default class NextTurn extends Vue {

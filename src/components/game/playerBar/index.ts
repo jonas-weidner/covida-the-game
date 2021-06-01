@@ -1,2 +1,2 @@
-import PlayerBar from "./playerBar.vue";
+import PlayerBar from "./PlayerBar.vue";
 export default PlayerBar;

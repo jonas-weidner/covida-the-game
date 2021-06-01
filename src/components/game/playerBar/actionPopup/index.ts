@@ -1,2 +1,2 @@
-import ActionPopup from "./actionPopup.vue";
+import ActionPopup from "./ActionPopup.vue";
 export default ActionPopup;

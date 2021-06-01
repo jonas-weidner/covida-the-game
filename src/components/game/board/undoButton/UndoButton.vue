@@ -19,7 +19,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import { restoreLastGameState } from "@/services/firebase";
-import { Game } from "@/types";
+import { Game } from "@/interfaces";
 
 @Component
 export default class UndoButton extends Vue {

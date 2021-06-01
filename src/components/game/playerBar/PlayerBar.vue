@@ -33,7 +33,7 @@
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 
 import RolePopup from "./rolePopup";
-import { Game, Player, PlayingCard } from "@/types";
+import { Game, Player, PlayingCard } from "@/interfaces";
 import PlayingCards from "@/components/game/playerBar/playingCards";
 import {
     updateAllPlayers,

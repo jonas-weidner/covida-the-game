@@ -42,7 +42,7 @@ export default Vue.extend({
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../../assets/world-map.jpg");
+    background-image: url("../../assets/images/world-map.jpg");
     background-size: cover;
     filter: blur(4px);
 }

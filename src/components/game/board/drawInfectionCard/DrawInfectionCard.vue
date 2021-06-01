@@ -19,7 +19,7 @@
                 size="md"
                 icon="hand-holding-medical"
                 aria-label="Draw"
-                @click="drawInfectionCard"
+                @click="DrawInfectionCard"
             />
         </c-tooltip>
     </div>
@@ -28,7 +28,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
 import { drawInfectionCard } from "@/services/firebase";
-import { Game } from "@/types";
+import { Game } from "@/interfaces";
 
 @Component
 export default class DrawInfectionCard extends Vue {

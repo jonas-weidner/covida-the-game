@@ -2,11 +2,11 @@
     <div class="language-switcher-wrapper shadow-2xl flex items-center space-x-2 rounded-tr-lg">
         <div class="cursor-pointer w-5 h-5 rounded-full overflow-hidden"
              @click="$i18n.locale ='en'">
-            <img src="@/assets/united-kingdom.svg" />
+            <img src="@/assets/icons/united-kingdom.svg" />
         </div>
         <div class="cursor-pointer w-5 h-5 rounded-full overflow-hidden"
              @click="$i18n.locale ='de'">
-            <img src="@/assets/germany.svg" />
+            <img src="@/assets/icons/germany.svg" />
         </div>
     </div>
 </template>

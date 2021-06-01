@@ -1,2 +1,2 @@
-import InfectionDiscardPile from "./infectionDiscardPile.vue";
+import InfectionDiscardPile from "./InfectionDiscardPile.vue";
 export default InfectionDiscardPile;

@@ -53,7 +53,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { City, Game, Player } from "@/types";
+import { City, Game, Player } from "@/interfaces";
 
 @Component
 export default class OverviewModal extends Vue {

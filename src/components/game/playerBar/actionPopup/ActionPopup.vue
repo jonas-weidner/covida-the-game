@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { Vue, Prop, Component } from "vue-property-decorator";
-import { ActionCard } from "@/types";
+import { ActionCard } from "@/interfaces";
 
 @Component
 export default class ActionPopup extends Vue {

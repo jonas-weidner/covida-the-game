@@ -1,4 +1,4 @@
-import { CityCard, Region } from "@/types";
+import { CityCard, Region } from "@/interfaces";
 
 export const infectionCards: CityCard[] = [
     {

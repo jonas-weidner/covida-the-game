@@ -23,47 +23,22 @@
                     @click="drawPlayingCards"
                 />
             </c-tooltip>
-
-            <c-tooltip v-if="isJonas" has-arrow
-                       :label="$t('playerCards.refillPlayerDeck')" placement="right">
-                <c-icon-button
-                    :isRound="true"
-                    variant-color="blue"
-                    bg="blue.800"
-                    color="white"
-                    size="md"
-                    icon="gift"
-                    aria-label="Auffüllen"
-                    @click="refillPlayerCardDeck"
-                />
-            </c-tooltip>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
-import { auth, drawPlayingCard, setPlayerDeck, setPlayerDiscardPile } from "@/services/firebase";
-import { Game } from "@/types";
+import { drawPlayingCard } from "@/services/firebase";
+import { Game } from "@/interfaces";
 
 @Component
 export default class PlayingCardDeck extends Vue {
     @Prop({ required: true }) game!: Game;
     public show = false;
 
-    get isJonas(): boolean {
-        return auth.currentUser?.email === "jonas@adabt.com";
-    }
-
     public async drawPlayingCards(): Promise<void> {
         return await drawPlayingCard();
-    }
-
-    public async refillPlayerCardDeck(): Promise<void> {
-        const discardPile = JSON.parse(JSON.stringify(this.game.playerDiscardPile));
-        const newDeck = [...discardPile, ...this.game.playerDeck];
-        await setPlayerDeck(newDeck);
-        await setPlayerDiscardPile([]);
     }
 }
 </script>

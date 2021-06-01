@@ -42,7 +42,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from "vue-property-decorator";
 import { Container, Draggable } from "vue-smooth-dnd";
-import { CityCard, Game, PlayingCard, Region } from "@/types";
+import { CityCard, Game, PlayingCard, Region } from "@/interfaces";
 import { applyDrag } from "@/services/dnd";
 import { initializeInfectionDeck } from "@/services/firebase";
 

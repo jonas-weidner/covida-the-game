@@ -1,2 +1,2 @@
-import CreateGame from "./createGame.vue";
+import CreateGame from "./CreateGame.vue";
 export default CreateGame;

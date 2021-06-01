@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { Game } from "@/types";
+import { Game } from "@/interfaces";
 
 Vue.use(Vuex);
 

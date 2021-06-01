@@ -1,2 +1,2 @@
-import StartGame from "./startGame.vue";
+import StartGame from "./StartGame.vue";
 export default StartGame;

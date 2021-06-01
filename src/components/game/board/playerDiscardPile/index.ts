@@ -1,2 +1,2 @@
-import PlayerDiscordPile from "@/components/game/board/playerDiscardPile/playerDiscardPile.vue";
+import PlayerDiscordPile from "@/components/game/board/playerDiscardPile/PlayerDiscardPile.vue";
 export default PlayerDiscordPile;

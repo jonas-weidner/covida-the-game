@@ -1,2 +1,2 @@
-import ExitGame from "./exitGame.vue";
+import ExitGame from "./ExitGame.vue";
 export default ExitGame;
